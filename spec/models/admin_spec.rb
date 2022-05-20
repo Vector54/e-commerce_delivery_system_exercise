@@ -19,6 +19,5 @@ RSpec.describe Admin, type: :model do
         expect(r).to eq true
       end
     end
-    oasvev
   end
 end
