@@ -58,4 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_004502) do
     t.index ["shipping_company_id"], name: "index_users_on_shipping_company_id"
   end
 
+  add_foreign_key "users", "shipping_companies"
 end

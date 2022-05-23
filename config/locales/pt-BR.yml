@@ -128,7 +128,7 @@ pt-BR:
       odd: deve ser ímpar
       other_than: deve ser diferente de %{count}
       present: deve ficar em branco
-      required: é obrigatório(a)
+      required: é obrigatória(o)
       taken: já está em uso
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
