@@ -9,6 +9,7 @@ pt-BR:
         current_password: Senha atual
         current_sign_in_at: Atualmente logado em
         current_sign_in_ip: IP do acesso atual
+        name: Nome
         email: E-mail
         encrypted_password: Senha criptografada
         failed_attempts: Tentativas sem sucesso
