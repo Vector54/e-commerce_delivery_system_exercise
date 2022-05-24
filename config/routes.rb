@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root "home#welcome"
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :shipping_companies, only: [:index, :show]
 end
