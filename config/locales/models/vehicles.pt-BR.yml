@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle: 'Veículo'
+    attributes:
+      vehicle:
+        plate: 'Placa'
+        brand_model: 'Marca e Modelo'
+        year: 'Ano de Fabricação'
+        weight_capacity: 'Carga Máxima'

@@ -27,7 +27,7 @@
         <nav>
           <%=link_to("Minha Transportadora", '/banna_path')%> | 
           <%=link_to("Ordens de Serviço", '/some_path')%> |
-          <%=link_to("Veículos", '/vehicles_path')%> | 
+          <%=link_to("Veículos", vehicles_path)%> | 
           <%=link_to("Tabela de Preços", '/banna_path')%> | 
           <%=link_to("Tabela de Prazos", '/some_path')%> |
           <%=button_to "Sair", destroy_user_session_path, method: :delete%>
