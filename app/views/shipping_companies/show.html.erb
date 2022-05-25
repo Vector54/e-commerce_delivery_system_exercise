@@ -1,0 +1,22 @@
+<div>
+  <%= @shipping_company.name%>
+</div>
+<div>
+Razão social: <%= @shipping_company.corporate_name%>
+</div>
+<div>
+CNPJ: <%= @shipping_company.cnpj%>
+</div>
+<div>
+Endereço para faturamento: <%= @shipping_company.billing_adress%>
+</div>
+<div>
+  <% if @shipping_company.active == true%>
+    Está ativa
+  <% else%>
+    Está inativa
+  <%end%>
+</div>
+<div>
+Domínio de e-mail: <%= @shipping_company.email_domain%>
+</div>
