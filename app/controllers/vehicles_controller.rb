@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to vehicles_path, notice: 'Cadastro realizado com sucesso.'
     else
-      flash.now[:notice] = 'Cadastro falhou.'
+      flash.now[:alert] = 'Cadastro falhou.'
       render 'new'
     end
   end

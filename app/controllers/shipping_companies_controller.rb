@@ -20,7 +20,7 @@ class ShippingCompaniesController < ApplicationController
     if @new_sc.save
       redirect_to @new_sc, notice: 'Cadastro realizado com sucesso.'
     else
-      flash.now[:notice] = 'Cadastro falhou.'
+      flash.now[:alert] = 'Cadastro falhou.'
       render 'new'
     end
   end

@@ -25,10 +25,10 @@
         </nav>
       <% elsif user_signed_in?%>
         <nav>
-          <%=link_to("Minha Transportadora", '/banna_path')%> | 
+          <%=link_to("Minha Transportadora", shipping_company_path(current_user.shipping_company.id))%> | 
           <%=link_to("Ordens de Serviço", '/some_path')%> |
           <%=link_to("Veículos", vehicles_path)%> | 
-          <%=link_to("Tabela de Preços", '/banna_path')%> | 
+          <%=link_to("Tabela de Preços", price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company)))%> | 
           <%=link_to("Tabela de Prazos", '/some_path')%> |
           <%=button_to "Sair", destroy_user_session_path, method: :delete%>
         </nav>

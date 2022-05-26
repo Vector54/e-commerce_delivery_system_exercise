@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Volume m³</th>
+    <th>Peso Kg</th>
+    <th>Preço por Km</th>
+  </tr>
+  <% @price_line.each do |pl|%>
+    <tr>
+      <td><%= pl.minimum_volume%> - <%= pl.maximum_volume%></td>
+      <td><%= pl.minimum_weight%> - <%= pl.maximum_weight%></td>
+      <td>R$<%= money_format(pl.value)%></td>
+    </tr>
+  <%end%>
+</table> 
+
+<strong>Valor mínimo = R$<%=money_format(@price_table.minimum_value)%> </strong>
+
+<%=link_to 'Cadastrar Linha', new_price_line_path%>
