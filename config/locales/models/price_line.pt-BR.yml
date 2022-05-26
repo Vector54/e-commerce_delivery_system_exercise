@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      price_line: 'Linha'
+    attributes:
+      price_line:
+        minimum_volume: 'Volume m³'
+        maximum_volume: 'a'
+        minimum_weight: 'Peso Kg'
+        maximum_weight: 'a'
+        value: 'Valor por Km'

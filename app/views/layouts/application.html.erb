@@ -16,12 +16,21 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <% if admin_signed_in? == true %>
+      <% if admin_signed_in?%>
         <nav>
           <%=link_to("Consulta de Preço", '/banna_path')%> | 
           <%=link_to("Transportadoras Cadastradas", shipping_companies_path)%> |
           <%=link_to("Cadastrar Transportadora", new_shipping_company_path)%> | 
           <%=button_to "Sair", destroy_admin_session_path, method: :delete%>
+        </nav>
+      <% elsif user_signed_in?%>
+        <nav>
+          <%=link_to("Minha Transportadora", shipping_company_path(current_user.shipping_company.id))%> | 
+          <%=link_to("Ordens de Serviço", '/some_path')%> |
+          <%=link_to("Veículos", vehicles_path)%> | 
+          <%=link_to("Tabela de Preços", price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company)))%> | 
+          <%=link_to("Tabela de Prazos", delivery_time_table_path(DeliveryTimeTable.find_by(shipping_company: current_user.shipping_company)))%> |
+          <%=button_to "Sair", destroy_user_session_path, method: :delete%>
         </nav>
       <%end%>
     </header>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_20_004502) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_015708) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -26,6 +26,43 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_004502) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "delivery_time_lines", force: :cascade do |t|
+    t.integer "init_distance"
+    t.integer "final_distance"
+    t.integer "delivery_time"
+    t.integer "delivery_time_table_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_time_table_id"], name: "index_delivery_time_lines_on_delivery_time_table_id"
+  end
+
+  create_table "delivery_time_tables", force: :cascade do |t|
+    t.integer "shipping_company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shipping_company_id"], name: "index_delivery_time_tables_on_shipping_company_id"
+  end
+
+  create_table "price_lines", force: :cascade do |t|
+    t.integer "minimum_volume"
+    t.integer "maximum_volume"
+    t.integer "minimum_weight"
+    t.integer "maximum_weight"
+    t.integer "value"
+    t.integer "price_table_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_table_id"], name: "index_price_lines_on_price_table_id"
+  end
+
+  create_table "price_tables", force: :cascade do |t|
+    t.integer "shipping_company_id", null: false
+    t.integer "minimum_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shipping_company_id"], name: "index_price_tables_on_shipping_company_id"
   end
 
   create_table "shipping_companies", force: :cascade do |t|
@@ -58,5 +95,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_004502) do
     t.index ["shipping_company_id"], name: "index_users_on_shipping_company_id"
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "plate"
+    t.string "brand_model"
+    t.date "year"
+    t.integer "weight_capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shipping_company_id", null: false
+    t.index ["shipping_company_id"], name: "index_vehicles_on_shipping_company_id"
+  end
+
+  add_foreign_key "delivery_time_lines", "delivery_time_tables"
+  add_foreign_key "delivery_time_tables", "shipping_companies"
+  add_foreign_key "price_lines", "price_tables"
+  add_foreign_key "price_tables", "shipping_companies"
   add_foreign_key "users", "shipping_companies"
+  add_foreign_key "vehicles", "shipping_companies"
 end
