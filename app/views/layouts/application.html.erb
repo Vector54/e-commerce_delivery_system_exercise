@@ -29,7 +29,7 @@
           <%=link_to("Ordens de Serviço", '/some_path')%> |
           <%=link_to("Veículos", vehicles_path)%> | 
           <%=link_to("Tabela de Preços", price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company)))%> | 
-          <%=link_to("Tabela de Prazos", '/some_path')%> |
+          <%=link_to("Tabela de Prazos", delivery_time_table_path(DeliveryTimeTable.find_by(shipping_company: current_user.shipping_company)))%> |
           <%=button_to "Sair", destroy_user_session_path, method: :delete%>
         </nav>
       <%end%>
