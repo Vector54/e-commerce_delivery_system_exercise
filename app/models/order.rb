@@ -3,9 +3,9 @@ class Order < ApplicationRecord
   belongs_to :shipping_company
 
   enum status: [:pendente, :ativa, :finalizada, :cancelada]
-  before_validation :set_status, :set_date, :set_value
+  before_validation  :set_date, :set_value
   validates :date, :value, presence: true
-  before_create :set_code
+  before_create :set_status, :set_code
 
   private
     def set_status

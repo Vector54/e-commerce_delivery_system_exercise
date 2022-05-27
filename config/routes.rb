@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/new_order/:id', to: 'shipping_companies#new_order', as: 'new_order'
   get '/show_order/:id', to: 'shipping_companies#show_order', as: 'show_order'
   post '/create_order/:id', to: 'shipping_companies#create_order', as: 'create_order'
+  patch '/update_order/:id', to: 'shipping_companies#update_order', as: 'update_order'
 end

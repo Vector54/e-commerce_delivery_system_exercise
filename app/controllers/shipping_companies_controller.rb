@@ -36,6 +36,15 @@ class ShippingCompaniesController < ApplicationController
     end 
   end
 
+  def update_order
+    id = params[:id]
+    order_parameters = params.require(:order).permit(:vehicle_id, :status)
+    @order = Order.find(id)
+    @order.update!(order_parameters)
+
+    redirect_to show_order_path(id)
+  end
+
   def show
     id = params[:id]
     @shipping_company = ShippingCompany.find(id)

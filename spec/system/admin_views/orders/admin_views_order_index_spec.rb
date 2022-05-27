@@ -78,5 +78,8 @@ describe 'Usuário acessa index de OSs de uma transportadora' do
     expect(page).to have_content "CPF do destinatário - #{os.cpf}"
     expect(page).to have_content "Admin responsável - #{os.admin.email}"
     expect(page).to have_content "Status - #{os.status}"
+    expect(page).not_to have_button 'Aceitar'
+    expect(page).not_to have_field 'Veículo'
+    expect(page).not_to have_button 'Negar'
   end
 end
