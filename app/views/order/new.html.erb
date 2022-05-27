@@ -1,4 +1,4 @@
-<%= form_with model: @order, url: create_order_path(@id) do |form|%>
+<%= form_with model: @order, url: "/shipping_companies/#{@id}/order" do |form|%>
   <div>
     <%= form.label :pickup_adress, 'Endereço para retirada'%>
     <%= form.text_field :pickup_adress%>

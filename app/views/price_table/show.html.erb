@@ -15,4 +15,4 @@
 
 <strong>Valor mínimo = R$<%=money_format(@price_table.minimum_value)%> </strong>
 
-<%=link_to 'Cadastrar Linha', new_price_line_path%>
+<%=link_to 'Cadastrar Linha', new_shipping_company_price_line_path(@price_table.shipping_company.id)%>

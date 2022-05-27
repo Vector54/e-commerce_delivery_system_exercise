@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário acessa index de OSs de uma transportadora' do
+describe 'Admin acessa index de OSs de uma transportadora' do
   it 'e as vê' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
       email_domain:"@seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
@@ -30,7 +30,7 @@ describe 'Usuário acessa index de OSs de uma transportadora' do
     click_on 'Frete do Seu Carlos'
     click_on 'Ordens de Serviço'
 
-    expect(page).to have_link "#{os.code}"
+    expect(page).to have_content "#{os.code}"
     expect(page).to have_content " - #{os.status}"
   end
 

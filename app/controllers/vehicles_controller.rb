@@ -1,19 +1,22 @@
 class VehiclesController < ApplicationController
   def index
+    @id = params[:shipping_company_id]
     @vehicles = Vehicle.all
   end
 
   def new
+    @id = params[:shipping_company_id]
     @vehicle = Vehicle.new
   end
 
   def create
+    id = params[:shipping_company_id]
     vehicle_params = params.require(:vehicle).permit(:plate, :brand_model, :year, :weight_capacity)
 
     @vehicle = Vehicle.new(vehicle_params)
-    @vehicle.shipping_company = current_user.shipping_company
+    @vehicle.shipping_company = ShippingCompany.find(id)
     if @vehicle.save
-      redirect_to vehicles_path, notice: 'Cadastro realizado com sucesso.'
+      redirect_to "/shipping_companies/#{id}/vehicles", notice: 'Cadastro realizado com sucesso.'
     else
       flash.now[:alert] = 'Cadastro falhou.'
       render 'new'

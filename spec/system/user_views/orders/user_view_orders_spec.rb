@@ -29,7 +29,7 @@ describe 'Usuário acessa index de OSs' do
     visit root_path
     click_on 'Ordens de Serviço'
 
-    expect(page).to have_link "#{os.code}"
+    expect(page).to have_content "#{os.code}"
     expect(page).to have_content " - #{os.status}"
   end
 

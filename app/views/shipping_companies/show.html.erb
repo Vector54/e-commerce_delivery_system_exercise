@@ -21,4 +21,4 @@ Endereço para faturamento: <%= @shipping_company.billing_adress%>
 Domínio de e-mail: <%= @shipping_company.email_domain%>
 </div>
 
-<%= link_to 'Ordens de Serviço', order_path(@shipping_company.id)%>
+<%= link_to 'Ordens de Serviço', shipping_company_order_index_path(@shipping_company.id)%>

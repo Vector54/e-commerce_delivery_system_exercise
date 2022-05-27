@@ -31,13 +31,13 @@
 </dl>
 
 <% if user_signed_in? && @order.status == 'pendente' %>
-  <%=form_with model: @order, url: update_order_path do |form|%>
+  <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
     <%=form.label :vehicle_id, 'Veículo'%>
     <%=form.collection_select :vehicle_id, Vehicle.all, :id, :plate%>
     <%=form.hidden_field :status, value: :ativa%>
     <%=form.submit 'Aceitar'%>
   <%end%>
-  <%=form_with model: @order, url: update_order_path do |form|%>
+  <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
     <%=form.hidden_field :status, value: :cancelada%>
     <%=form.submit 'Negar'%>
   <%end%>
