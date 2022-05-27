@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   resources :price_line, only: [:new, :create]
   resources :delivery_time_table, only: [:show]
   resources :delivery_time_line, only: [:new, :create]
+  get '/:id/orders', to: 'shipping_companies#orders', as: 'order'
+  get '/new_order/:id', to: 'shipping_companies#new_order', as: 'new_order'
+  get '/show_order/:id', to: 'shipping_companies#show_order', as: 'show_order'
+  post '/create_order/:id', to: 'shipping_companies#create_order', as: 'create_order'
 end

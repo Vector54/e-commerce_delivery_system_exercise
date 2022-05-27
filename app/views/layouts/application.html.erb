@@ -26,7 +26,7 @@
       <% elsif user_signed_in?%>
         <nav>
           <%=link_to("Minha Transportadora", shipping_company_path(current_user.shipping_company.id))%> | 
-          <%=link_to("Ordens de Serviço", '/some_path')%> |
+          <%=link_to("Ordens de Serviço", order_path(current_user.shipping_company.id))%> |
           <%=link_to("Veículos", vehicles_path)%> | 
           <%=link_to("Tabela de Preços", price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company)))%> | 
           <%=link_to("Tabela de Prazos", delivery_time_table_path(DeliveryTimeTable.find_by(shipping_company: current_user.shipping_company)))%> |

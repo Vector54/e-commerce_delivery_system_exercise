@@ -1,0 +1,27 @@
+<h3><%=@order.code%></h3>
+<dl>
+  <dt>Transportadora - </dt>
+    <dd><%=@order.shipping_company.name%></dd>
+  <dt>Distância Km - </dt>
+    <dd><%=@order.distance%></dd>
+  <dt>Orçamento - </dt>
+    <dd>R$<%=money_format(@order.value)%></dd>
+  <dt>Data de entrega - </dt>
+    <dd><%=@order.date%></dd>
+  <dt>Código do produto - </dt>
+    <dd><%=@order.product_code%></dd>
+  <dt>Volume m³ - </dt>
+    <dd><%=@order.width*@order.height*@order.depth%></dd>
+  <dt>Peso Kg - </dt>
+    <dd><%=@order.weight%></dd>
+  <dt>Endereço de retirada - </dt>
+    <dd><%=@order.pickup_adress%></dd>
+  <dt>Endereço de entrega - </dt>
+    <dd><%=@order.delivery_adress%></dd>
+  <dt>CPF do destinatário - </dt>
+    <dd><%=@order.cpf%></dd>
+  <dt>Admin responsável - </dt>
+    <dd><%=@order.admin.email%></dd>
+  <dt>Status - </dt>
+    <dd><%=@order.status%></dd>
+</dl>
