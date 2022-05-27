@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :admin
   belongs_to :shipping_company
+  has_many :update_lines
 
   enum status: [:pendente, :ativa, :finalizada, :cancelada]
   before_validation  :set_date, :set_value

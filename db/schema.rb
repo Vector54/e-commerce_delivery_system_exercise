@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_015905) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_204338) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -100,6 +100,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_015905) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "update_lines", force: :cascade do |t|
+    t.string "coordinates"
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_update_lines_on_order_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -136,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_015905) do
   add_foreign_key "orders", "shipping_companies"
   add_foreign_key "price_lines", "price_tables"
   add_foreign_key "price_tables", "shipping_companies"
+  add_foreign_key "update_lines", "orders"
   add_foreign_key "users", "shipping_companies"
   add_foreign_key "vehicles", "shipping_companies"
 end

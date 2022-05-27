@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :delivery_time_table, only: [:show]
     resources :delivery_time_line, only: [:new, :create]
     resources :order, only: [:index, :show, :new, :create, :update]
+    resources :update_line, only: [:create]
   end  
   #get '/:id/orders', to: 'shipping_companies#orders', as: 'order'
   #get '/new_order/:id', to: 'shipping_companies#new_order', as: 'new_order'

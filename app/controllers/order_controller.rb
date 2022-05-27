@@ -8,6 +8,8 @@ class OrderController < ApplicationController
   def show
     id = params[:id]
     @order = Order.find(id)
+    @update_lines = UpdateLine.where(order: @order)
+    @update_line_new = UpdateLine.new
   end
   
   def new

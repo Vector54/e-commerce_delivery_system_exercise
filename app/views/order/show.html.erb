@@ -30,6 +30,10 @@
   <%end%>
 </dl>
 
+<% @update_lines.each do |ul|%>
+  <%= ul.created_at%> -------------- <%= ul.coordinates%> 
+<%end%>
+
 <% if user_signed_in? && @order.status == 'pendente' %>
   <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
     <%=form.label :vehicle_id, 'Veículo'%>
@@ -40,5 +44,22 @@
   <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
     <%=form.hidden_field :status, value: :cancelada%>
     <%=form.submit 'Negar'%>
+  <%end%>
+<% elsif user_signed_in? && @order.status == 'ativa' %>
+  <%=form_with url: shipping_company_update_line_index_path(@order.shipping_company.id) do |form|%>
+    <%=form.label :latitude%>
+    <%=form.number_field :latitude%>
+    <%=form.label :longitude%>
+    <%=form.number_field :longitude%>
+    <%=form.hidden_field :order, value: @order.id%>
+    <%=form.submit 'Atualizar'%>
+  <%end%>
+  <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
+    <%=form.hidden_field :status, value: :finalizada%>
+    <%=form.submit 'Finalizar'%>
+  <%end%>
+  <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
+    <%=form.hidden_field :status, value: :cancelada%>
+    <%=form.submit 'Cancelar'%>
   <%end%>
 <%end%>
