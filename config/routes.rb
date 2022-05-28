@@ -11,12 +11,11 @@ Rails.application.routes.draw do
     resources :price_line, only: [:new, :create]
     resources :delivery_time_table, only: [:show]
     resources :delivery_time_line, only: [:new, :create]
-    resources :order, only: [:index, :show, :new, :create, :update]
+    
+    resources :order, only: [:index, :show, :new, :create, :update] do
+      post 'new_ul', on: :member
+    end
     resources :update_line, only: [:create]
   end  
-  #get '/:id/orders', to: 'shipping_companies#orders', as: 'order'
-  #get '/new_order/:id', to: 'shipping_companies#new_order', as: 'new_order'
-  #get '/show_order/:id', to: 'shipping_companies#show_order', as: 'show_order'
-  #post '/create_order/:id', to: 'shipping_companies#create_order', as: 'create_order'
-  #patch '/update_order/:id', to: 'shipping_companies#update_order', as: 'update_order'
+  get '/search', to: "order#search"
 end

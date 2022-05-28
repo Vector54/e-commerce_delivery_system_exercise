@@ -46,7 +46,7 @@
     <%=form.submit 'Negar'%>
   <%end%>
 <% elsif user_signed_in? && @order.status == 'ativa' %>
-  <%=form_with url: shipping_company_update_line_index_path(@order.shipping_company.id) do |form|%>
+  <%=form_with url: new_ul_order_path(@order.id) do |form|%>
     <%=form.label :latitude%>
     <%=form.number_field :latitude%>
     <%=form.label :longitude%>

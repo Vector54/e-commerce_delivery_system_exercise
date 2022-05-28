@@ -34,6 +34,17 @@ class OrderController < ApplicationController
     end 
   end
 
+  def new_ul
+    raw_line_params = params.permit(:latitude, :longitude, :order)
+    str_line_params = raw_line_params[:latitude].to_s.insert(-6, '.') + ', ' + raw_line_params[:longitude].to_s.insert(-6, '.')
+
+    ul = UpdateLine.new(coordinates: str_line_params)
+    ul.order = Order.find(raw_line_params[:order].to_i)
+    ul.save!
+    
+    redirect_to order_path(ul.order.id)
+  end
+
   def update
     id = params[:id]
     order_parameters = params.require(:order).permit(:vehicle_id, :status)
@@ -41,6 +52,18 @@ class OrderController < ApplicationController
     @order.update!(order_parameters)
 
     redirect_to order_path(id)
+  end
+
+  def search
+    code = params[:query]
+    @order = Order.find_by(code: code)
+    @update_lines = UpdateLine.where(order: @order)
+    if @order.is_a?(Order)
+      render :show
+    else 
+      flash[:alert] = 'Nenhum resultado para a pesquisa.'
+      redirect_to root_path
+    end
   end
 
 end
