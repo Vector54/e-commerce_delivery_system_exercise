@@ -1,0 +1,27 @@
+<%= form_with model: @shipping_company do |form|%>
+  <div>
+    <%= form.label :name%>
+    <%= form.text_field :name%>
+  </div>
+  <div>
+    <%= form.label :corporate_name%>
+    <%= form.text_field :corporate_name%>
+  </div>
+  <div>
+    <%= form.label :cnpj%>
+    <%= form.text_field :cnpj%>
+  </div>
+  <div>
+    <%= form.label :billing_adress%>
+    <%= form.text_field :billing_adress%>
+  </div>
+  <div>
+    <%= form.label :active%>
+    <%= form.check_box :active%>
+  </div>
+  <div>
+    <%= form.label :email_domain%>
+    <%= form.text_field :email_domain%>
+  </div>
+  <%= form.submit 'Cadastrar'%>
+<%end%>

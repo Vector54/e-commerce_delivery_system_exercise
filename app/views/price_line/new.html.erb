@@ -1,0 +1,20 @@
+<%= form_with model: @price_line, url: shipping_company_price_line_index_path do |form|%>
+  <div>
+    <%=form.label :minimum_volume%>
+    <%=form.number_field :minimum_volume%>
+    <%=form.label :maximum_volume%>
+    <%=form.number_field :maximum_volume%>
+  </div>
+  <div>
+    <%=form.label :minimum_weight%>
+    <%=form.number_field :minimum_weight%>
+    <%=form.label :maximum_weight%>
+    <%=form.number_field :maximum_weight%>
+  </div>
+  <div>
+    <%=form.label :value%>
+    <%=form.number_field :value%>
+  </div>
+  <%=form.submit 'Cadastrar'%>
+
+<%end%>

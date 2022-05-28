@@ -1,0 +1,10 @@
+<% if @shipping_companies.empty? %>
+  Não há transportadoras cadastradas.
+<%else%>
+  <h2>Transportadoras Cadastradas</h2>
+  <% @shipping_companies.each do |sc|%>
+    <div>
+      <%= link_to(sc.name, shipping_company_path(sc.id))%>
+    </div>
+  <% end%>
+<%end%>

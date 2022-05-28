@@ -1,0 +1,7 @@
+<% @vehicles.each do |v|%>
+  <div>
+    <%=v.brand_model%> -- Placa - <%=link_to v.plate, '/path_some'%>
+  </div>
+<%end%>
+
+<%=link_to 'Cadastrar Veículo', new_shipping_company_vehicle_path(@id)%>

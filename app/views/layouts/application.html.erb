@@ -12,9 +12,27 @@
 
   <body>
     <header>
-    <h1>Sistema de frete</h1>
+      <h1><%= link_to 'Sistema de frete', root_path%></h1>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+
+      <% if admin_signed_in?%>
+        <nav>
+          <%=link_to("Consulta de Preço", budget_query_shipping_companies_path)%> | 
+          <%=link_to("Transportadoras Cadastradas", shipping_companies_path)%> |
+          <%=link_to("Cadastrar Transportadora", new_shipping_company_path)%> | 
+          <%=button_to "Sair", destroy_admin_session_path, method: :delete%>
+        </nav>
+      <% elsif user_signed_in?%>
+        <nav>
+          <%=link_to("Minha Transportadora", shipping_company_path(current_user.shipping_company.id))%> | 
+          <%=link_to("Ordens de Serviço", shipping_company_order_index_path(current_user.shipping_company.id))%> |
+          <%=link_to("Veículos", shipping_company_vehicles_path(current_user.shipping_company.id))%> | 
+          <%=link_to("Tabela de Preços", price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company)))%> | 
+          <%=link_to("Tabela de Prazos", delivery_time_table_path(DeliveryTimeTable.find_by(shipping_company: current_user.shipping_company)))%> |
+          <%=button_to "Sair", destroy_user_session_path, method: :delete%>
+        </nav>
+      <%end%>
     </header>
     <%= yield %>
   </body>

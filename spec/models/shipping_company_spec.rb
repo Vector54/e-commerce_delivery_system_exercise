@@ -63,7 +63,7 @@ RSpec.describe ShippingCompany, type: :model do
                             billing_adress: 'Rua do Seu Carlos, 86', active: '' )
         r = sc.valid?
         
-        expect(r).to eq false
+        expect(r).to eq true
       end
     end
   end
