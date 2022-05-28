@@ -1,8 +1,0 @@
-pt-BR:
-  activerecord:
-    models:
-      order: 'Ordem de Serviço'
-    attributes:
-      order:
-        statuses:
-          pending: 'pendente'

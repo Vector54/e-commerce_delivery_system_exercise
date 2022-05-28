@@ -1,9 +1,0 @@
-pt-BR:
-  activerecord:
-    models:
-      delivery_time_line: 'Linha'
-    attributes:
-      delivery_time_line:
-        init_distance: 'Distância'
-        final_distance: 'a'
-        delivery_time: 'Prazo'
