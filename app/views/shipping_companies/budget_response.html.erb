@@ -1,0 +1,6 @@
+
+<% @hashes.each do |h|%>
+  <div>
+    <%= link_to(h[:name], shipping_company_path(h[:id]))%> - R$<%=money_format(h[:value])%> - <%=h[:days]%> dias
+  </div>
+<% end%>

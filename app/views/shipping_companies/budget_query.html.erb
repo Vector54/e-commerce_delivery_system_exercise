@@ -1,0 +1,15 @@
+<%=form_with url: budget_response_shipping_companies_path, method: :get do |f|%>
+  <%=f.label :width, 'Largura'%>
+  <%=f.number_field :width%>
+  <%=f.label :height, 'Altura'%>
+  <%=f.number_field :height%>
+  <%=f.label :depth, 'Profundidade'%>
+  <%=f.number_field :depth%>
+  <div>
+    <%=f.label :weight, 'Peso'%>
+    <%=f.number_field :weight%>
+    <%=f.label :distance, 'Distância'%>
+    <%=f.number_field :distance%>
+  </div>
+  <%=f.submit 'Consultar'%>
+<%end%>

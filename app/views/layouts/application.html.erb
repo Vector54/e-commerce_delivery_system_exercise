@@ -18,7 +18,7 @@
 
       <% if admin_signed_in?%>
         <nav>
-          <%=link_to("Consulta de Preço", '/banna_path')%> | 
+          <%=link_to("Consulta de Preço", budget_query_shipping_companies_path)%> | 
           <%=link_to("Transportadoras Cadastradas", shipping_companies_path)%> |
           <%=link_to("Cadastrar Transportadora", new_shipping_company_path)%> | 
           <%=button_to "Sair", destroy_admin_session_path, method: :delete%>
