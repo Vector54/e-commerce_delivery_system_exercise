@@ -15,4 +15,12 @@ class PriceLineController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    id = params[:id]
+    @price_line = PriceLine.find(id)
+    @price_line.delete
+
+    redirect_to shipping_company_price_table_index_path(@price_line.price_table.shipping_company_id)
+  end
 end

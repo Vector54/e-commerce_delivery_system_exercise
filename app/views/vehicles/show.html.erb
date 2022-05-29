@@ -10,3 +10,10 @@
 <div>
   Capacidade de carga Kg - <%=@vehicle.weight_capacity%> 
 </div>
+<div>
+  <%= link_to 'Editar', edit_vehicle_path(@vehicle.id)%>
+</div>
+
+<div>
+  <%= button_to 'Deletar Veículo', "/vehicles/#{@vehicle.id}", method: :delete%>
+</div>

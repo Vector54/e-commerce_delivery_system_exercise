@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :shipping_companies, only: [:index, :show, :new, :create, :edit, :update], shallow: true do
-    resources :vehicles, only: [:index, :show, :new, :create]
+    resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resources :price_table, only: [:index]
-    resources :price_line, only: [:new, :create]
+    resources :price_line, only: [:new, :create, :destroy]
     resources :delivery_time_table, only: [:index]
-    resources :delivery_time_line, only: [:new, :create]
+    resources :delivery_time_line, only: [:new, :create, :destroy]
     resources :order, only: [:index, :show, :new, :create, :update] do
       post 'new_ul', on: :member
     end

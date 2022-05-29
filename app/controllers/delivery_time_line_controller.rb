@@ -15,4 +15,13 @@ class DeliveryTimeLineController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    id = params[:id]
+
+    @delivery_time_line = DeliveryTimeLine.find(id)
+    @delivery_time_line.delete
+    
+    redirect_to shipping_company_delivery_time_table_index_path(@delivery_time_line.delivery_time_table.shipping_company_id)
+  end
 end
