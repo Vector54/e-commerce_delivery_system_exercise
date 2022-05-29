@@ -48,7 +48,7 @@ describe 'Visitante acessa a tela inicial' do
                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2, 
                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86' )  
 
-    ul = UpdateLine.create!(coordinates: '1456 - 1564', order: os)                  
+    ul = UpdateLine.create!(coordinates: '145, 64', order: os)                  
 
     visit root_path
     fill_in 'Consulta de OS', with: os.code
@@ -78,7 +78,7 @@ describe 'Visitante acessa a tela inicial' do
                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2, 
                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86' )  
 
-    ul = UpdateLine.create!(coordinates: '1456 - 1564', order: os)                  
+    ul = UpdateLine.create!(coordinates: '14, 564', order: os)                  
 
     visit root_path
     fill_in 'Consulta de OS', with: 'notavalidcode'

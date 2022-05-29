@@ -38,7 +38,7 @@ class OrderController < ApplicationController
 
   def new_ul
     raw_line_params = params.permit(:latitude, :longitude, :order)
-    str_line_params = raw_line_params[:latitude].to_s.insert(-6, '.') + ', ' + raw_line_params[:longitude].to_s.insert(-6, '.')
+    str_line_params = raw_line_params[:latitude].to_s+ ', ' + raw_line_params[:longitude].to_s
 
     ul = UpdateLine.new(coordinates: str_line_params)
     ul.order = Order.find(raw_line_params[:order].to_i)
