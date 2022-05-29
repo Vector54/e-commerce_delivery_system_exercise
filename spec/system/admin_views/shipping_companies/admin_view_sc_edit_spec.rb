@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Admin acessa tela de edição de transportadora' do 
   it 'e a vê' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"@seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
       billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
@@ -33,7 +33,7 @@ describe 'Admin acessa tela de edição de transportadora' do
 
   it 'e faz uma atualização' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"@seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
       billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",

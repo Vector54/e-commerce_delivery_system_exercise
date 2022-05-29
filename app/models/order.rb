@@ -5,6 +5,7 @@ class Order < ApplicationRecord
 
   enum status: [:pendente, :ativa, :finalizada, :cancelada]
   before_validation  :set_date, :set_value
+  validate :shipping_company_cant_be_inactive
   validates :date, :value, presence: true
   before_create :set_status, :set_code
 
@@ -48,5 +49,11 @@ class Order < ApplicationRecord
 
     def set_code
       self.code = SecureRandom.alphanumeric(15).upcase
+    end
+    
+    def shipping_company_cant_be_inactive
+      if self.shipping_company.active == false
+        errors.add(:shipping_company, "Transportadora não está ativa.")
+      end
     end
 end

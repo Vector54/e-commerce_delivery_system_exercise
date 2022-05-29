@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Admin acessa index de OSs de uma transportadora' do
   it 'e as vê' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"@seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
       billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
@@ -36,7 +36,7 @@ describe 'Admin acessa index de OSs de uma transportadora' do
 
   it 'e acessa os detalhes de uma' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"@seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
       billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
