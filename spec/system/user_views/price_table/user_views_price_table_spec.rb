@@ -8,7 +8,8 @@ describe 'Usuário acessa link de tabela de preço' do
         
     pl = PriceLine.create!(minimum_volume: 100, maximum_volume: 5000, minimum_weight: 10, 
                             maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-    pl2 = PriceLine.create!(minimum_volume: 5000, maximum_volume: 10000, minimum_weight: 50, 
+    
+    pl2 = PriceLine.create!(minimum_volume: 5001, maximum_volume: 10000, minimum_weight: 51, 
                             maximum_weight: 100, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
@@ -33,14 +34,15 @@ describe 'Usuário acessa link de tabela de preço' do
     expect(page).to have_content 'Valor mínimo = R$0,00'
   end
 
-  it 'e deleta uma uma linha' do
+  it 'e deleta uma linha' do
     sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
           email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
           billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     pl = PriceLine.create!(minimum_volume: 100, maximum_volume: 5000, minimum_weight: 10, 
       maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-    pl2 = PriceLine.create!(minimum_volume: 5000, maximum_volume: 10000, minimum_weight: 50, 
+    
+      pl2 = PriceLine.create!(minimum_volume: 5001, maximum_volume: 10000, minimum_weight: 51, 
       maximum_weight: 100, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
