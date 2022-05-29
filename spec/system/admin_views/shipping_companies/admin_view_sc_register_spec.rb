@@ -17,9 +17,8 @@ describe 'Admin acessa página de cadastro de transportadora' do
     expect(page).to have_field 'Razão social'
     expect(page).to have_field 'CNPJ'
     expect(page).to have_field 'Endereço para faturamento'
-    expect(page).to have_field 'Status'
     expect(page).to have_field 'Domínio de e-mail'
-    expect(page).to have_button 'Cadastrar'
+    expect(page).to have_button 'Criar Transportadora'
   end
 
   it 'e cadastra uma nova transportadora' do
@@ -37,9 +36,8 @@ describe 'Admin acessa página de cadastro de transportadora' do
     fill_in 'Razão social', with: 'FRETE DO SEU CARLOS LTDA'
     fill_in 'CNPJ', with: '06.902.995/0001-62'
     fill_in 'Endereço para faturamento', with: 'Rua do Seu Carlos, 56'
-    check 'Status'
     fill_in 'Domínio de e-mail', with: 'seucarlosfrete.com.br'
-    click_on 'Cadastrar'
+    click_on 'Criar Transportadora'
 
     sc = ShippingCompany.last
     expect(page).to have_content 'Cadastro realizado com sucesso.'
@@ -63,7 +61,7 @@ describe 'Admin acessa página de cadastro de transportadora' do
 		click_on 'Log in'
     click_on 'Cadastrar Transportadora'
     fill_in 'Nome', with: 'Frete do Seu Carlos'
-    click_on 'Cadastrar'
+    click_on 'Criar Transportadora'
 
     expect(page).to have_content 'Cadastro falhou.'
   end

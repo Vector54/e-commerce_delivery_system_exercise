@@ -1,0 +1,20 @@
+<h2>Editar Veículo</h2>
+<%= form_with model: @vehicle, url: "/vehicles/#{@vehicle.id}" do |form|%>
+  <div>
+    <%=form.label :plate%>
+    <%=form.text_field :plate%>
+  </div>
+  <div>
+    <%=form.label :brand_model%>
+    <%=form.text_field :brand_model%>
+  </div>
+  <div>
+    <%=form.label :year%>
+    <%=form.text_field :year%>
+  </div>
+  <div>
+    <%=form.label :weight_capacity%>
+    <%=form.number_field :weight_capacity, autocomplete: 'em Kg'%>
+  </div>
+  <%=form.submit%>
+<%end%>

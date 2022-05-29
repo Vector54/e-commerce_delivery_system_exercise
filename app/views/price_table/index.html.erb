@@ -9,10 +9,11 @@
       <td><%= pl.minimum_volume%> - <%= pl.maximum_volume%></td>
       <td><%= pl.minimum_weight%> - <%= pl.maximum_weight%></td>
       <td>R$<%= money_format(pl.value)%></td>
+      <td> <%=button_to 'Excluir', price_line_path(pl.id), method: :delete%></td>
     </tr>
   <%end%>
 </table> 
 
 <strong>Valor mínimo = R$<%=money_format(@price_table.minimum_value)%> </strong>
 
-<%=link_to 'Cadastrar Linha', new_price_line_path%>
+<%=link_to 'Cadastrar Linha', new_shipping_company_price_line_path(@price_table.shipping_company.id)%>

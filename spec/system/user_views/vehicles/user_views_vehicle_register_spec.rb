@@ -19,7 +19,7 @@ describe 'Usuário acessa tela de registro de veículo' do
     expect(page).to have_field 'Marca e Modelo'
     expect(page).to have_field 'Ano de Fabricação'
     expect(page).to have_field 'Carga Máxima'
-    expect(page).to have_button 'Cadastrar'
+    expect(page).to have_button 'Criar Veículo'
   end
 
   it 'e cadastra um veículo' do
@@ -39,7 +39,7 @@ describe 'Usuário acessa tela de registro de veículo' do
     fill_in 'Marca e Modelo', with: 'Volksvagem - Delivery 9.170'
     fill_in 'Ano de Fabricação', with: '2022'
     fill_in 'Carga Máxima', with: '8800000'
-    click_on 'Cadastrar'
+    click_on 'Criar Veículo'
 
                                         
     v = Vehicle.last
@@ -63,7 +63,7 @@ describe 'Usuário acessa tela de registro de veículo' do
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
     fill_in 'Placa', with: '8585-POU'
-    click_on 'Cadastrar'
+    click_on 'Criar Veículo'
 
                                         
     expect(page).to have_content 'Cadastro falhou.'                             

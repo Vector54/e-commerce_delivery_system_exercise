@@ -1,7 +1,7 @@
 <% @vehicles.each do |v|%>
   <div>
-    <%=v.brand_model%> -- Placa - <%=link_to v.plate, '/path_some'%>
+    <%=v.brand_model%> -- Placa - <%=link_to v.plate, vehicle_path(v.id)%>
   </div>
 <%end%>
 
-<%=link_to 'Cadastrar Veículo', new_vehicle_path%>
+<%=link_to 'Cadastrar Veículo', new_shipping_company_vehicle_path(@id)%>

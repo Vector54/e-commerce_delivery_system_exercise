@@ -1,0 +1,9 @@
+<% @orders.each do |os|%>
+  <div>
+    <%= link_to os.code, order_path(os.id)%> - <%= os.status%>
+  </div>
+<%end%>
+
+<%if admin_signed_in?%>
+  <%= link_to 'Cadastrar OS', new_shipping_company_order_path(@shipping_company.id)%>
+<%end%>
