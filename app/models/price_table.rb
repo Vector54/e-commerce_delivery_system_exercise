@@ -1,4 +1,4 @@
 class PriceTable < ApplicationRecord
   belongs_to :shipping_company
-  has_many :price_line
+  has_many :price_lines
 end

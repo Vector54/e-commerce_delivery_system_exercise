@@ -1,6 +1,6 @@
 <% @vehicles.each do |v|%>
   <div>
-    <%=v.brand_model%> -- Placa - <%=link_to v.plate, '/path_some'%>
+    <%=v.brand_model%> -- Placa - <%=link_to v.plate, vehicle_path(v.id)%>
   </div>
 <%end%>
 

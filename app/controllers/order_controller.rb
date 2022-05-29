@@ -10,6 +10,8 @@ class OrderController < ApplicationController
     @order = Order.find(id)
     @update_lines = UpdateLine.where(order: @order)
     @update_line_new = UpdateLine.new
+    @ids = Order.select(:vehicle_id).where(status: 1)
+    @vehicles = Vehicle.where(shipping_company_id: @order.shipping_company_id).where.not(id: @ids)
   end
   
   def new

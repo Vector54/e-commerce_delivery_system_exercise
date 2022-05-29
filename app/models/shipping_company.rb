@@ -4,7 +4,7 @@ class ShippingCompany < ApplicationRecord
   has_one :price_table
   has_one :delivery_time_table
 
-  before_create :set_price_table, :set_delivery_time_table
+  before_create :set_price_table, :set_delivery_time_table, :set_status
 
   private
 
@@ -14,5 +14,9 @@ class ShippingCompany < ApplicationRecord
     
     def set_delivery_time_table
       DeliveryTimeTable.new(shipping_company: self)
+    end
+
+    def set_status
+      self.active = true
     end
 end

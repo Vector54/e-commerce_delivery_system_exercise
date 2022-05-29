@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_204338) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_29_002851) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -130,7 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_204338) do
   create_table "vehicles", force: :cascade do |t|
     t.string "plate"
     t.string "brand_model"
-    t.date "year"
+    t.string "year"
     t.integer "weight_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

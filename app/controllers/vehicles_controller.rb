@@ -1,7 +1,12 @@
 class VehiclesController < ApplicationController
   def index
     @id = params[:shipping_company_id]
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.where(shipping_company: ShippingCompany.find(@id))
+  end
+
+  def show
+    id = params[:id]
+    @vehicle = Vehicle.find(id)
   end
 
   def new

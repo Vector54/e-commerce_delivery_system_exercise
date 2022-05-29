@@ -9,7 +9,7 @@ class DeliveryTimeLineController < ApplicationController
     @delivery_time_line = DeliveryTimeLine.new(delivery_time_line_params)
     @delivery_time_line.delivery_time_table = current_user.shipping_company.delivery_time_table
     if @delivery_time_line.save
-      redirect_to delivery_time_table_path(DeliveryTimeTable.find_by(shipping_company: current_user.shipping_company))
+      redirect_to shipping_company_delivery_time_table_index_path(current_user.shipping_company)
     else
       flash.now[:alert] = "Cadastro Falhou"
       render 'new'

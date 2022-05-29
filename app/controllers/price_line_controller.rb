@@ -9,7 +9,7 @@ class PriceLineController < ApplicationController
     @price_line = PriceLine.new(price_line_params)
     @price_line.price_table = current_user.shipping_company.price_table
     if @price_line.save
-      redirect_to price_table_path(PriceTable.find_by(shipping_company: current_user.shipping_company))
+      redirect_to shipping_company_price_table_index_path(current_user.shipping_company)
     else
       flash.now[:alert] = "Cadastro Falhou"
       render 'new'
