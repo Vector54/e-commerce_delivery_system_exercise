@@ -4,4 +4,6 @@
   </div>
 <%end%>
 
-<%= link_to 'Cadastrar OS', new_shipping_company_order_path(@shipping_company.id)%>
+<%if admin_signed_in?%>
+  <%= link_to 'Cadastrar OS', new_shipping_company_order_path(@shipping_company.id)%>
+<%end%>

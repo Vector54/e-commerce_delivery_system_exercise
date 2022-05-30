@@ -30,14 +30,17 @@
   <%end%>
 </dl>
 
+<p>Histórico</p>
 <% @update_lines.each do |ul|%>
-  <%= ul.created_at%> -------------- <%= ul.coordinates%> 
+  <div>
+    <%= ul.created_at%> -------------- <%= ul.coordinates%>
+  </div> 
 <%end%>
 
 <% if user_signed_in? && @order.status == 'pendente' %>
   <%=form_with model: @order, url: "/order/#{@order.id}" do |form|%>
     <%=form.label :vehicle_id, 'Veículo'%>
-    <%=form.collection_select :vehicle_id, Vehicle.all, :id, :plate%>
+    <%=form.collection_select :vehicle_id, @vehicles, :id, :plate%>
     <%=form.hidden_field :status, value: :ativa%>
     <%=form.submit 'Aceitar'%>
   <%end%>

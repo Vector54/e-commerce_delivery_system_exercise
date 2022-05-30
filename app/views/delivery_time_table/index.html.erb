@@ -3,10 +3,11 @@
     <th>Distância Km |</th>
     <th>Prazo dias</th>
   </tr>
-    <% @delivery_time_line.each do |dtl|%>
+    <% @delivery_time_lines.each do |dtl|%>
      <tr>
         <td><%=dtl.init_distance%> - <%=dtl.final_distance%></td>
         <td><%=dtl.delivery_time%></td>
+        <td> <%= button_to 'Excluir', delivery_time_line_path(dtl.id), method: :delete%></td>
       </tr>
     <%end%>
 </table>

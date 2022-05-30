@@ -31,5 +31,6 @@ describe 'Usuário acessa index de OSs' do
 
     expect(page).to have_content "#{os.code}"
     expect(page).to have_content " - #{os.status}"
+    expect(page).not_to have_link "Cadastrar OS"
   end
 end

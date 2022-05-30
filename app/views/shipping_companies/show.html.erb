@@ -21,4 +21,21 @@ Endereço para faturamento: <%= @shipping_company.billing_adress%>
 Domínio de e-mail: <%= @shipping_company.email_domain%>
 </div>
 
-<%= link_to 'Ordens de Serviço', shipping_company_order_index_path(@shipping_company.id)%>
+
+<%if admin_signed_in?%>
+  <div>
+    <%= link_to 'Ordens de Serviço', shipping_company_order_index_path(@shipping_company.id)%>
+  </div>
+  <div>
+    <%= link_to 'Editar', edit_shipping_company_path%>
+  </div>
+  <%if @shipping_company.active == true%>
+    <div>
+      <%= button_to 'Desativar', status_change_shipping_company_path(@shipping_company.id), method: :patch, params: {:active => false}%>
+    </div>
+  <%else%>
+    <div>
+      <%= button_to 'Reativar', "/shipping_companies/#{@shipping_company.id}", method: :patch, params: {:active => true}%>
+    </div>
+  <%end%>
+<%end%>

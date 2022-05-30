@@ -1,4 +1,4 @@
-<%= form_with model: @shipping_company do |form|%>
+<%= form_with model: @shipping_company, url: "/shipping_companies/#{@shipping_company.id}" do |form|%>
   <div>
     <%= form.label :name%>
     <%= form.text_field :name%>

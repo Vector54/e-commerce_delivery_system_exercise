@@ -1,5 +1,5 @@
-<h2>Cadastrar Veículo</h2>
-<%= form_with model: @vehicle, url: "/shipping_companies/#{@id}/vehicles" do |form|%>
+<h2>Editar Veículo</h2>
+<%= form_with model: @vehicle, url: "/vehicles/#{@vehicle.id}" do |form|%>
   <div>
     <%=form.label :plate%>
     <%=form.text_field :plate%>

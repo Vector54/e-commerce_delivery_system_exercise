@@ -21,5 +21,6 @@ describe 'Usuário acessa link "Minha Transportadora"' do
     expect(page).to have_content 'Está ativa'
     expect(page).to have_content "Domínio de e-mail: #{sc.email_domain}"
     expect(page).not_to have_link 'Editar'
+    expect(page).to have_link 'Ordens de Serviço', count: 1
   end
 end

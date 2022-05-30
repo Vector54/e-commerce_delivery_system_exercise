@@ -71,7 +71,7 @@ describe 'Usuário acessa detalhe de uma OS' do
                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2, 
                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
                       
-    ul = UpdateLine.create!(coordinates: '1456 - 1564', order: os)
+    ul = UpdateLine.create!(coordinates: '145, 564', order: os)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -108,10 +108,10 @@ describe 'Usuário acessa detalhe de uma OS' do
                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))                                    
 
     Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
-                          weight_capacity: 8800000, shipping_company: sc)                                  
+                          weight_capacity: 8800, shipping_company: sc)                                  
                           
     Vehicle.create!(plate: '7555-IOU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
-                          weight_capacity: 8800000, shipping_company: sc)
+                          weight_capacity: 8800, shipping_company: sc)
 
     os = Order.create!(admin: a, weight: 10,
                       shipping_company: sc, distance: 95, pickup_adress: 'Rua de Retirada, 45',
