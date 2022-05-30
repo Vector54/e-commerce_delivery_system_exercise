@@ -147,4 +147,4 @@ Hoje eu discordo da minha lógica. No momento o código compara os valores míni
 ## Sobre endereços e coordenadas
 Pela descrição do projeto, imaginei que as *features* de localização, como *input* de endereços e cáculo de distância, fossem planejadas para serem feitas por API do Google ou algo do tiop. Infelizmente não soube fazer nem tive tempo de encaixar a API na aplicação, por isso fiz do jeito mais cru. 
 ## Comentário pessoal
-Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação 5 a 6 dias atrás. Aprendi muito, me frustrei muito, mas adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.
+Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação. Aprendi muito, me frustrei muito, mas adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.
