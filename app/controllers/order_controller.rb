@@ -1,4 +1,6 @@
 class OrderController < ApplicationController
+  before_action :authenticate_admin!, only: :new
+
   def index
     id = params[:shipping_company_id]
     @shipping_company = ShippingCompany.find(id)

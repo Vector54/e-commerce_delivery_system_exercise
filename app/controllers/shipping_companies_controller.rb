@@ -1,4 +1,7 @@
 class ShippingCompaniesController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :index, :budget_query, :budget_response] 
+
+
   def index
     @shipping_companies = ShippingCompany.all
   end
