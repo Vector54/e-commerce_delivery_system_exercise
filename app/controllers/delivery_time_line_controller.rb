@@ -1,4 +1,6 @@
 class DeliveryTimeLineController < ApplicationController
+  before_action :visit_blocker
+
   def new
     @delivery_time_line = DeliveryTimeLine.new()
   end
@@ -24,4 +26,11 @@ class DeliveryTimeLineController < ApplicationController
     
     redirect_to shipping_company_delivery_time_table_index_path(@delivery_time_line.delivery_time_table.shipping_company_id)
   end
+
+  private
+    def visit_blocker
+      unless user_signed_in? || admin_signed_in?
+        redirect_to new_user_session_path
+      end
+    end
 end

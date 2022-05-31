@@ -1,4 +1,6 @@
 class UpdateLineController < ApplicationController
+  before_action :visit_blocker
+
   def create
     raw_line_params = params.permit(:latitude, :longitude, :order)
     str_line_params = raw_line_params[:latitude].to_s.insert(-6, '.') + ', ' + raw_line_params[:longitude].to_s.insert(-6, '.')
@@ -9,4 +11,11 @@ class UpdateLineController < ApplicationController
     
     redirect_to order_path(ul.order.id)
   end
+
+  private
+    def visit_blocker
+      unless user_signed_in? || admin_signed_in?
+        redirect_to new_user_session_path
+      end
+    end
 end

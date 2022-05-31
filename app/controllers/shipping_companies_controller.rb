@@ -1,5 +1,6 @@
 class ShippingCompaniesController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :index, :budget_query, :budget_response] 
+  before_action :authenticate_admin!, only: [:new, :index, :budget_query, :budget_response]
+  before_action :visit_blocker, only: :show
 
 
   def index
@@ -120,4 +121,11 @@ class ShippingCompaniesController < ApplicationController
       redirect_to budget_query_shipping_companies_path, alert: 'Nenhum resultado encontrado.'
     end
   end
+
+  private
+    def visit_blocker
+      unless user_signed_in? || admin_signed_in?
+        redirect_to new_user_session_path
+      end
+    end
 end
