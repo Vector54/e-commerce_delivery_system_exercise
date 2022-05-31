@@ -23,16 +23,16 @@ class PriceLine < ApplicationRecord
 
     def data_intersection
       if PriceLine.where(price_table: self.price_table).any?
-        general_minimum_volume = PriceLine.select(:minimum_volume).where(price_table_id: self.price_table_id).min.minimum_volume
-        general_maximum_volume = PriceLine.select(:maximum_volume).where(price_table_id: self.price_table_id).max.maximum_volume
-        general_minimum_weight = PriceLine.select(:minimum_weight).where(price_table_id: self.price_table_id).min.minimum_weight
-        general_maximum_weight = PriceLine.select(:maximum_weight).where(price_table_id: self.price_table_id).max.maximum_weight
-        if ((self.minimum_weight >= general_minimum_weight && self.minimum_weight <= general_maximum_weight) ||
-          (self.maximum_weight <= general_maximum_weight && self.maximum_weight >= general_maximum_weight)) &&
-          ((self.minimum_volume >= general_minimum_volume && self.minimum_volume >= general_minimum_volume) ||
-          (self.maximum_volume <= general_maximum_volume && self.maximum_volume >= general_maximum_volume))
-          errors.add(:minimum_volume, 'não pode intersectar com outras linhas enquanto o peso tambem o faz.')
-          errors.add(:minimum_weight, 'não pode intersectar com outras linhas enquanto o volume tambem o faz.')
+        price_line_array = PriceLine.where(price_table: self.price_table)
+
+        price_line_array.each do |pl|
+          if ((self.minimum_volume > pl.minimum_volume && self.minimum_volume < pl.maximum_volume) ||
+            (self.maximum_volume > pl.minimum_volume && self.maximum_volume < pl.maximum_volume)) &&
+            ((self.minimum_weight > pl.minimum_weight && self.minimum_weight < pl.maximum_weight) ||
+            (self.maximum_weight > pl.minimum_weight && self.maximum_weight< pl.maximum_weight))
+            errors.add(:minimum_volume, 'não pode intersectar com outras linhas enquanto o peso tambem o faz.')
+            errors.add(:minimum_weight, 'não pode intersectar com outras linhas enquanto o volume tambem o faz.')    
+          end
         end
       end
     end

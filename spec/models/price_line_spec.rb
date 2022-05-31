@@ -47,6 +47,23 @@ RSpec.describe PriceLine, type: :model do
 
         expect(pl2.valid?).to be false
       end
+
+      it 'pode estar entre dois ranges.' do
+        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
+          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+          billing_adress: 'Rua do Seu Carlos, 86')
+
+        PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5, 
+            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+
+        PriceLine.create!(minimum_volume: 101, maximum_volume: 200, minimum_weight: 5, 
+            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+            
+        pl2 = PriceLine.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5, 
+            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+
+        expect(pl2.valid?).to be true
+      end
     end
 
     context 'peso' do
