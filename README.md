@@ -111,7 +111,7 @@ $ rails console
   * Volume máximo e mínimo.
   * Peso máximo e mínimo.
   * Valor por Km.
-  * Preço mínimo (comentários no [apêndice](#apêndice))
+  * Preço mínimo pode ser atualizado pelo usuário.
   * Todos obrigatórios.
   ### 6.2 Ações no model:
   * Possui validações que não permitem cadastro de mínimos com valores maiores que máximos.
@@ -151,12 +151,10 @@ $ rails console
 ## Sobre as tabelas de preço e prazo
 No momento de criação destas, eu estava no começo e não me toquei que não havia necessidade. Mas após notar o trabalho a mais que isso me custou, resolvi deixar permanecer, e desenvolver o resto das funções a redor disto.
 ## Sobre os veículos
-A inclusão do campo "capacidade de carga" eu imagino que venha da necessidade da restrição de escolha de veículos para a OS, já que, a depender da carga alguns caminhões não vão poder levar. Por enquanto não implementei, mas vou pensar nisso nos próximos dias.
-## Sobre o preço mínimo
-Esta parte simplesmente não foi desenvolvida, mas quero deixar-la pronta. Esse campo até ficou na tabela de preços, porém não sei se vou utilizar lá. 
+Eu imagino que a inclusão do campo "capacidade de carga" venha da necessidade da restrição de escolha de veículos para a OS, já que, a depender da carga alguns caminhões não vão poder levar. Por enquanto não implementei, mas vou pensar nisso nos próximos dias.
 ## Sobre as validações de intersecção
 Hoje eu discordo da minha lógica. No momento o código compara os valores mínimos e máximos com o mínimo e máximo de todas as linhas. Ou seja, se houver uma linha com *range* 10..50 e outra com 101..150, o sistema não permite a criação de uma 51..100, por que leva-se em consideração o *range* total. Algo a se consertar.
 ## Sobre endereços e coordenadas
-Pela descrição do projeto, imaginei que as *features* de localização, como *input* de endereços e cáculo de distância, fossem planejadas para serem feitas por API do Google ou algo do tiop. Infelizmente não soube fazer nem tive tempo de encaixar a API na aplicação, por isso fiz do jeito mais cru. 
+Pela descrição do projeto, imaginei que as *features* de localização, como *input* de endereços e cáculo de distância, fossem planejadas para serem feitas por API do Google ou algo do tipo. Infelizmente não soube fazer nem tive tempo de encaixar a API na aplicação, por isso fiz do jeito mais "cru". 
 ## Comentário pessoal
 Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação 5 a 6 dias atrás. Aprendi muito, me frustrei muito, mas adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.
