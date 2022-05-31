@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  before_action :visit_blocker
+
   def index
     @id = params[:shipping_company_id]
     @vehicles = Vehicle.where(shipping_company: ShippingCompany.find(@id))
@@ -53,4 +55,11 @@ class VehiclesController < ApplicationController
 
     redirect_to shipping_company_vehicles_path(@vehicle.shipping_company_id)
   end
+
+  private
+    def visit_blocker
+      unless user_signed_in? || admin_signed_in?
+        redirect_to new_user_session_path
+      end
+    end
 end

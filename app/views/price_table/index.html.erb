@@ -15,5 +15,13 @@
 </table> 
 
 <strong>Valor mínimo = R$<%=money_format(@price_table.minimum_value)%> </strong>
+<div>
+  <%= form_with model: @price_table, method: :patch do |f|%>
+    <%= f.label :minimum_value, 'Novo preço mínimo'%>
+    <%= f.number_field :minimum_value, autocomplete: 'XX,XX'%>
+    <%= f.submit 'Atualizar'%>
+  <%end%>
+
+</div>
 
 <%=link_to 'Cadastrar Linha', new_shipping_company_price_line_path(@price_table.shipping_company.id)%>

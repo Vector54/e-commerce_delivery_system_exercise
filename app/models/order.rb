@@ -32,7 +32,8 @@ class Order < ApplicationRecord
 
     def set_value
       peso = self.weight
-      price_line_array = PriceLine.where(price_table: self.shipping_company.price_table)
+      price_table = PriceTable.find_by(shipping_company: self.shipping_company)
+      price_line_array = PriceLine.where(price_table: price_table)
       
       unless self.distance.nil? || price_line_array.empty? ||
         self.width.nil? || self.height.nil? || self.depth.nil?
@@ -43,12 +44,11 @@ class Order < ApplicationRecord
           mav = pl.maximum_volume
           miw = pl.minimum_weight
           maw = pl.maximum_weight
-          final_value = pl.value*self.distance
-          if miv < volume &&
-            mav > volume &&
-            miw < self.weight &&
-            maw > self.weight 
-            self.value = final_value
+          if miv < volume && mav > volume &&
+            miw < self.weight && maw > self.weight 
+            self.value = pl.value*self.distance
+          elsif volume < miv || self.weight < miw
+            self.value = price_table.minimum_value*self.distance
           end
         end
       end

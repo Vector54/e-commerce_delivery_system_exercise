@@ -292,8 +292,6 @@ RSpec.describe Order, type: :model do
         expect(os1.valid?).to be false
       end
 
-
-
       it 'trasportadora desativada' do 
         sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
           email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
@@ -316,6 +314,52 @@ RSpec.describe Order, type: :model do
                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86' )
         
         expect(os1.valid?).to be false
+      end
+
+      it 'valor mínimo' do
+        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
+                  email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+                  billing_adress: 'Rua do Seu Carlos, 86')
+
+        PriceTable.find_by(shipping_company: sc).update!("minimum_value"=>"25")                                  
+        sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
+                      email_domain:"seumeirelesfrete.com.br", cnpj: "06.902.578/0001-57",
+                      billing_adress: 'Rua do Seu Meireles, 68')
+        PriceTable.find_by(shipping_company: sc2).update!("minimum_value"=>"25")
+        a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
+        a.confirm
+        a.save
+
+        dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, 
+                    delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+
+        pl1_1 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5, 
+            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+
+        dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, 
+            delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+
+        pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51, 
+        maximum_weight: 70, value: 150, price_table: PriceTable.find_by(shipping_company: sc))
+
+        dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3, 
+        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc2))
+
+        pl1_2 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5, 
+        maximum_weight: 50, value: 50, price_table: PriceTable.find_by(shipping_company: sc2))
+
+        dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6, 
+        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc2))
+
+        pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51, 
+        maximum_weight: 70, value: 100, price_table: PriceTable.find_by(shipping_company: sc2))
+
+        os = Order.create!(admin: a, weight: 10,
+                      shipping_company: sc, distance: 75, pickup_adress: 'Rua de Retirada, 45',
+                      product_code: 'SOMTHIN-098', width: 1, height: 1, depth: 1, 
+                      delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86' )
+
+        expect(os.value).to eq 1875
       end
     end
 
