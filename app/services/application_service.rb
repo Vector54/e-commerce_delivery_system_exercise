@@ -1,5 +1,5 @@
 class ApplicationService
-  def self.visit_block(*args, &block)
-    new(*args, &block).visit_block
+  def self.find_budgets(*args, &block)
+    new(*args, &block).find_budgets
   end
 end

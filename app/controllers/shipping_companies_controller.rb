@@ -68,54 +68,7 @@ class ShippingCompaniesController < ApplicationController
 
   def budget_response
     parameters_raw = params.permit(:width, :height, :depth, :weight, :distance)
-    volume = parameters_raw[:width].to_i*parameters_raw[:height].to_i*parameters_raw[:depth].to_i
-    
-    pls = []
-    dtls = []
-    ShippingCompany.where(active: true).each do |sca|
-      sca.delivery_time_table.delivery_time_lines.each do |dtla|
-        dtls << dtla
-      end
-      sca.price_table.price_lines.each do |pla|
-        pls << pla
-      end
-    end
-
-    dtls_1_filter = []
-    dtls.each do |dtl|
-      if dtl.init_distance < parameters_raw[:distance].to_i && dtl.final_distance > parameters_raw[:distance].to_i
-        dtls_1_filter << dtl
-      end
-    end
-
-    pls_1_filter = []
-    pls.each do |pl|
-      if pl.minimum_volume < volume && pl.maximum_volume > volume &&
-        pl.minimum_weight < parameters_raw[:weight].to_i && pl.maximum_weight > parameters_raw[:weight].to_i
-        pls_1_filter << pl
-      end
-    end
-    
-    ls_2_filter = []
-    pls_1_filter.each do |pl|
-      dtls_1_filter.each do |dtl|
-        if dtl.delivery_time_table.shipping_company == pl.price_table.shipping_company
-          hash = {dtl: dtl, pl: pl}
-          ls_2_filter << hash
-        end
-      end
-    end
-
-    @hashes = []
-
-    ls_2_filter.each do |hash|
-      name = hash[:dtl].delivery_time_table.shipping_company.name
-      id = hash[:dtl].delivery_time_table.shipping_company.id
-      value = hash[:pl].value * parameters_raw[:distance].to_i
-      days = hash[:dtl].delivery_time
-      f_hash = {name: name, id: id, value: value, days: days}
-      @hashes << f_hash
-    end
+    @hashes = BudgetFinder.find_budgets(parameters_raw)
 
     if @hashes.empty?
       redirect_to budget_query_shipping_companies_path, alert: 'Nenhum resultado encontrado.'
