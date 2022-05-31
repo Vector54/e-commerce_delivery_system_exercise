@@ -116,6 +116,7 @@ $ rails console
   ### 6.2 Ações no model:
   * Possui validações que não permitem cadastro de mínimos com valores maiores que máximos.
   * Possui validação de intersecção de dados. No caso, pode-se cadastrar várias linhas com volumes interseccionados, desde que os *ranges* de pesos dessas não o façam tambem, e vice-versa. Isso impede o sistema de consulta e cálculo de preços de encontrar ambiguidades, e assim não deixar passar algumas linhas.
+    * Para essa validação a comparação é feita com cada linha, permitindo cadastro futuro de linhas intermedárias.
 
   ## 7. Linhas de prazo:
   ### 7.1 Atributos: 
@@ -151,11 +152,9 @@ $ rails console
 ## Sobre as tabelas de preço e prazo
 No momento de criação destas, eu estava no começo e não me toquei que não havia necessidade. Mas após notar o trabalho a mais que isso me custou, resolvi deixar permanecer, e desenvolver o resto das funções a redor disto.
 ## Sobre os veículos
-Eu imagino que a inclusão do campo "capacidade de carga" venha da necessidade da restrição de escolha de veículos para a OS, já que, a depender da carga alguns caminhões não vão poder levar. Por enquanto não implementei, mas vou pensar nisso nos próximos dias.
-## Sobre as validações de intersecção
-Hoje eu discordo da minha lógica. No momento o código compara os valores mínimos e máximos com o mínimo e máximo de todas as linhas. Ou seja, se houver uma linha com *range* 10..50 e outra com 101..150, o sistema não permite a criação de uma 51..100, por que leva-se em consideração o *range* total. Algo a se consertar.
+Eu imagino que a inclusão do campo "capacidade de carga" venha da necessidade da restrição de escolha de veículos para a OS, já que, a depender da carga alguns caminhões não vão poder levar. Por enquanto não implementei, mas vou pensar nisso.
 ## Sobre endereços e coordenadas
 Pela descrição do projeto, imaginei que as *features* de localização, como *input* de endereços e cáculo de distância, fossem planejadas para serem feitas por API do Google ou algo do tipo. Infelizmente não soube fazer nem tive tempo de encaixar a API na aplicação, por isso fiz do jeito mais "cru". 
 ## Comentário pessoal
 
-Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação. Aprendi muito, me frustrei muito, mas adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.
+Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação. Aprendi muito, me frustrei muito e adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.

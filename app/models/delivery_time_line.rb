@@ -14,13 +14,14 @@ class DeliveryTimeLine < ApplicationRecord
     end
 
     def cannot_intersect_with_other_ranges
-      if DeliveryTimeLine.where(delivery_time_table: self.delivery_time_table).any?
-        general_init_distance = DeliveryTimeLine.select(:init_distance).where(delivery_time_table: self.delivery_time_table).min.init_distance
-        general_final_distance = DeliveryTimeLine.select(:final_distance).where(delivery_time_table: self.delivery_time_table).max.final_distance
-        if (self.init_distance > general_init_distance && self.init_distance < general_final_distance) ||
-          (self.final_distance < general_final_distance && self.final_distance > general_init_distance)
-          errors.add(:init_distance, 'não pode intersectar com outras linhas.')
-          errors.add(:final_distance, 'não pode intersectar com outras linhas.')
+      delivery_time_lines = DeliveryTimeLine.where(delivery_time_table: self.delivery_time_table)
+      if delivery_time_lines.any?
+        delivery_time_lines.each do |dtl|
+          if (self.init_distance > dtl.init_distance && self.init_distance < dtl.final_distance) ||
+            (self.final_distance > dtl.init_distance && self.final_distance < dtl.final_distance)
+            errors.add(:init_distance, 'não pode intersectar com outras linhas.')
+            errors.add(:final_distance, 'não pode intersectar com outras linhas.')
+          end
         end
       end
     end

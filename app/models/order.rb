@@ -31,7 +31,6 @@ class Order < ApplicationRecord
     end
 
     def set_value
-      peso = self.weight
       price_table = PriceTable.find_by(shipping_company: self.shipping_company)
       price_line_array = PriceLine.where(price_table: price_table)
       
