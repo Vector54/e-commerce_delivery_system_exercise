@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :shipping_companies, only: [:index, :show, :new, :create, :edit, :update], shallow: true do
     resources :vehicles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :price_table, only: [:index]
+    resources :price_table, only: [:index, :update]
     resources :price_line, only: [:new, :create, :destroy]
     resources :delivery_time_table, only: [:index]
     resources :delivery_time_line, only: [:new, :create, :destroy]
