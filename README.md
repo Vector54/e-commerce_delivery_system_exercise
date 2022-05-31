@@ -156,4 +156,5 @@ Eu imagino que a inclusão do campo "capacidade de carga" venha da necessidade d
 ## Sobre endereços e coordenadas
 Pela descrição do projeto, imaginei que as *features* de localização, como *input* de endereços e cáculo de distância, fossem planejadas para serem feitas por API do Google ou algo do tipo. Infelizmente não soube fazer nem tive tempo de encaixar a API na aplicação, por isso fiz do jeito mais "cru". 
 ## Comentário pessoal
+
 Após vários dias de desventuras e desistências, consegui me levantar e desenvolver a aplicação. Aprendi muito, me frustrei muito e adorei a experiência. Agradeço muito à equipe e a turma do Treinadev8, e também minha família, pela assistência e suporte na feitura desse projeto. Espero poder continuar no curso e, adiante, no trabalho de developer.
