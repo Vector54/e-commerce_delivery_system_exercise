@@ -135,6 +135,17 @@ $ rails console
   ### 9.2 Consulta de Orçamento:
   * Disponível apenas para Admins, esta, a partir de informações necessárias para cálcula de preço prazo (largura, altura, profundidade, peso e distância), trás uma lista de transportadoras com seus respectivos preços e prazos associados. O nome de cada empresa é um link para sua página, onde o Admin pode então fazer sua OS.
 
+  ## 10. Autenticações:
+  ### 10.1 Admin:
+  * Pode acessar consulta de OS, consulta de orçamento, lista e cadastro de tranportadoras e OS's, e demais páginas (embora não haja links para estas ainda).
+  ### 10.2 Usuário:
+  * Pode acessar consulta de OS, sua transportadora, suas OS's, seus veículos e seus preços e prazos. Incluindo páginas de CRUD.
+  * Não pode acessar consulta de orçamento, lista e cadastro de transportadoras e cadastro de OS's.
+  ### 10.3 Visitante:
+  * Não autenticado.
+  * Só pode acessar a consulta de OS's (e as páginas de *Login*).
+
+
 # Apêndice:
 ## Sobre as tabelas de preço e prazo
 No momento de criação destas, eu estava no começo e não me toquei que não havia necessidade. Mas após notar o trabalho a mais que isso me custou, resolvi deixar permanecer, e desenvolver o resto das funções a redor disto.
