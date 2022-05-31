@@ -38,6 +38,24 @@ RSpec.describe DeliveryTimeLine, type: :model do
         
         expect(dtl.valid?).to be false
       end
+
+      it 'pode estar entre outros ranges' do
+        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
+                                      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
+                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
+
+        DeliveryTimeLine.create!(init_distance: 1, final_distance: 100, delivery_time: 2, 
+                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        
+        DeliveryTimeLine.create!(init_distance: 201, final_distance: 300, delivery_time: 3, 
+                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        
+
+        dtl = DeliveryTimeLine.new(init_distance: 101, final_distance: 200, delivery_time: 2, 
+                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        
+        expect(dtl.valid?).to be true
+      end
     end
 
     context 'presença' do
