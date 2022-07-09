@@ -9,7 +9,6 @@ class ShippingCompany < ApplicationRecord
   has_one :price_table, dependent: :destroy
   has_one :delivery_time_table, dependent: :destroy
 
-  before_create :set_status
   after_create :set_price_table, :set_delivery_time_table
 
   private
@@ -20,9 +19,5 @@ class ShippingCompany < ApplicationRecord
 
   def set_delivery_time_table
     DeliveryTimeTable.create(shipping_company: self)
-  end
-
-  def set_status
-    self.active = true
   end
 end
