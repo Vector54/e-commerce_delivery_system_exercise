@@ -179,3 +179,7 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Max: 20
+
+Rails/Output:
+  Exclude: 
+    - 'db/seeds.rb'
