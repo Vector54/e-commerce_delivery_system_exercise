@@ -56,6 +56,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'rubocop', require: false 
+  gem 'simplecov', require: false, group: :test
 end
 
 group :development do
