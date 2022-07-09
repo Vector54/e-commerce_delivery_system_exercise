@@ -1,0 +1,7 @@
+pt-BR:
+  order:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou."
+    search:
+      no_results: "Nenhum resultado para a pesquisa."

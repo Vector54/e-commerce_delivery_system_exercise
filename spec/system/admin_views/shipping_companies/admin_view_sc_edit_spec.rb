@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe 'Admin acessa tela de edição de transportadora' do 
+describe 'Admin acessa tela de edição de transportadora' do
   it 'e a vê' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-      billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
-          email_domain:"meirelesfrete.com.br", cnpj: "56.522.523/0001-52",
-          billing_adress: 'Rua do Seu Meireles, 56', active: false) 
+    sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
+                                  email_domain: 'meirelesfrete.com.br', cnpj: '56.522.523/0001-52',
+                                  billing_adress: 'Rua do Seu Meireles, 56', active: false)
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
     a.confirm
@@ -32,13 +34,13 @@ describe 'Admin acessa tela de edição de transportadora' do
   end
 
   it 'e faz uma atualização' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-      email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-      billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
-          email_domain:"meirelesfrete.com.br", cnpj: "56.522.523/0001-52",
-          billing_adress: 'Rua do Seu Meireles, 56', active: false) 
+    sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
+                                  email_domain: 'meirelesfrete.com.br', cnpj: '56.522.523/0001-52',
+                                  billing_adress: 'Rua do Seu Meireles, 56', active: false)
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
     a.confirm
@@ -52,12 +54,12 @@ describe 'Admin acessa tela de edição de transportadora' do
     click_on 'Transportadoras Cadastradas'
     click_on 'Frete do Seu Meireles'
     click_on 'Editar'
-    fill_in 'Nome', with: "Seu Meireles Frete"
+    fill_in 'Nome', with: 'Seu Meireles Frete'
     fill_in 'Razão social', with: 'SEU MEIRELES FRETE SA'
     click_on 'Atualizar Transportadora'
 
     expect(page).to have_content 'Seu Meireles Frete'
-    expect(page).to have_content "Razão social: SEU MEIRELES FRETE SA"
+    expect(page).to have_content 'Razão social: SEU MEIRELES FRETE SA'
     expect(page).to have_content "CNPJ: #{sc2.cnpj}"
     expect(page).to have_content "Endereço para faturamento: #{sc2.billing_adress}"
     expect(page).to have_content 'Está ativa'

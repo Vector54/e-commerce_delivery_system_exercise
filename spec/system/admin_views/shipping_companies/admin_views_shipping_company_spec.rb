@@ -1,29 +1,31 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Admin acessa index de transportadoras' do
   it 'e acessa lista de transportadoras' do
-		sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-																	email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-																	billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-		sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
-																	email_domain:"meirelesfrete.com.br", cnpj: "56.522.523/0001-52",
-																	billing_adress: 'Rua do Seu Meireles, 56', active: true) 
+    sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
+                                  email_domain: 'meirelesfrete.com.br', cnpj: '56.522.523/0001-52',
+                                  billing_adress: 'Rua do Seu Meireles, 56', active: true)
 
-		a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
-		a.confirm
-		a.save
+    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
+    a.confirm
+    a.save
 
-		visit root_path
-		click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
-		click_on 'Transportadoras Cadastradas'
+    visit root_path
+    click_on 'Admin'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
+    click_on 'Transportadoras Cadastradas'
 
-		expect(page).to have_link 'Frete do Seu Carlos'
-		expect(page).to have_link 'Frete do Seu Meireles'
-	end
+    expect(page).to have_link 'Frete do Seu Carlos'
+    expect(page).to have_link 'Frete do Seu Meireles'
+  end
 
   it 'e não vê transportadoras' do
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
@@ -32,26 +34,22 @@ describe 'Admin acessa index de transportadoras' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Transportadoras Cadastradas'
 
-    expect(page).to have_content "Não há transportadoras cadastradas."
-  end 
+    expect(page).to have_content 'Não há transportadoras cadastradas.'
+  end
 
   it ', clica numa transportadora e vê seus detalhes' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-        email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-        billing_adress: 'Rua do Seu Carlos, 86')
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86')
 
-    sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
-          email_domain:"meirelesfrete.com.br", cnpj: "56.522.523/0001-52",
-          billing_adress: 'Rua do Seu Meireles, 56')
-
-   
-
-    
+    sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
+                                  email_domain: 'meirelesfrete.com.br', cnpj: '56.522.523/0001-52',
+                                  billing_adress: 'Rua do Seu Meireles, 56')
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
     a.confirm
@@ -59,9 +57,9 @@ describe 'Admin acessa index de transportadoras' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Transportadoras Cadastradas'
     click_on 'Frete do Seu Meireles'
 
@@ -74,13 +72,13 @@ describe 'Admin acessa index de transportadoras' do
   end
 
   it 'e destiva uma transportadora' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-        email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-        billing_adress: 'Rua do Seu Carlos, 86')
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86')
 
-    sc2 = ShippingCompany.create!(name:"Frete do Seu Meireles", corporate_name:"FRETE DO SEU MEIRELES LTDA",
-          email_domain:"meirelesfrete.com.br", cnpj: "56.522.523/0001-52",
-          billing_adress: 'Rua do Seu Meireles, 56')
+    sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
+                                  email_domain: 'meirelesfrete.com.br', cnpj: '56.522.523/0001-52',
+                                  billing_adress: 'Rua do Seu Meireles, 56')
 
     a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
     a.confirm
@@ -88,9 +86,9 @@ describe 'Admin acessa index de transportadoras' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Transportadoras Cadastradas'
     click_on 'Frete do Seu Meireles'
     click_on 'Desativar'

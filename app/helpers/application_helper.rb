@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def money_format(money_integer)
     money_str = money_integer.to_s
@@ -8,6 +10,6 @@ module ApplicationHelper
     else
       money_str.insert(-3, ',')
     end
-    return money_str
+    money_str
   end
 end
