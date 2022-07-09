@@ -1,0 +1,8 @@
+pt-BR:
+  vehicles:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou."
+    update:
+      success: "Veículo atualizado com sucesso."
+      failure: "Atualização falhou."

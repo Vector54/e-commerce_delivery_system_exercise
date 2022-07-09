@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeliveryTimeTableController < ApplicationController
   before_action :visit_blocker
 
@@ -8,9 +10,8 @@ class DeliveryTimeTableController < ApplicationController
   end
 
   private
-    def visit_blocker
-      unless user_signed_in? || admin_signed_in?
-        redirect_to new_user_session_path
-      end
-    end
+
+  def visit_blocker
+    redirect_to new_user_session_path unless user_signed_in? || admin_signed_in?
+  end
 end

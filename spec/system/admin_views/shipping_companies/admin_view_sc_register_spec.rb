@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Admin acessa página de cadastro de transportadora' do
@@ -8,11 +10,11 @@ describe 'Admin acessa página de cadastro de transportadora' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Cadastrar Transportadora'
-    
+
     expect(page).to have_field 'Nome'
     expect(page).to have_field 'Razão social'
     expect(page).to have_field 'CNPJ'
@@ -28,9 +30,9 @@ describe 'Admin acessa página de cadastro de transportadora' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Cadastrar Transportadora'
     fill_in 'Nome', with: 'Frete do Seu Carlos'
     fill_in 'Razão social', with: 'FRETE DO SEU CARLOS LTDA'
@@ -56,9 +58,9 @@ describe 'Admin acessa página de cadastro de transportadora' do
 
     visit root_path
     click_on 'Admin'
-		fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
-		fill_in 'Senha', with: 'password456'
-		click_on 'Log in'
+    fill_in 'E-mail', with: 'teste@sistemadefrete.com.br'
+    fill_in 'Senha', with: 'password456'
+    click_on 'Log in'
     click_on 'Cadastrar Transportadora'
     fill_in 'Nome', with: 'Frete do Seu Carlos'
     click_on 'Criar Transportadora'

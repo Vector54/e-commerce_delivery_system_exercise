@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_29_002851) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_09_175157) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -98,6 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_002851) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cnpj"], name: "index_shipping_companies_on_cnpj", unique: true
   end
 
   create_table "update_lines", force: :cascade do |t|

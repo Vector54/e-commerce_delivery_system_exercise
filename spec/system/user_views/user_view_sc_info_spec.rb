@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário acessa link "Minha Transportadora"' do
   it 'e a vê' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-                                email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-                                billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
