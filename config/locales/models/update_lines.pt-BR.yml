@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      update_line: 'Linha de Atualização'
+    attributes:
+      update_line:
+        coordinates: 'Coordenadas'
+    errors:
+      models:
+        update_line:
+          attributes:
+            coordinates:
+              bad_format: "têm formato inválido"
