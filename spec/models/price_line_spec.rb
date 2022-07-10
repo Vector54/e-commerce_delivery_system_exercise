@@ -63,10 +63,10 @@ RSpec.describe PriceLine, type: :model do
         described_class.create!(minimum_volume: 101, maximum_volume: 200, minimum_weight: 5,
                                 maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
 
-        pl2 = described_class.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5,
-                                  maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+        pl = described_class.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
 
-        expect(pl2).to be_valid
+        expect(pl).to be_valid
       end
     end
 

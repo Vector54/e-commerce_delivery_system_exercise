@@ -62,7 +62,7 @@ describe 'Admin acessa tela de edição de transportadora' do
     expect(page).to have_content 'Razão social: SEU MEIRELES FRETE SA'
     expect(page).to have_content "CNPJ: #{sc2.cnpj}"
     expect(page).to have_content "Endereço para faturamento: #{sc2.billing_adress}"
-    expect(page).to have_content 'Está ativa'
+    expect(page).to have_content 'Está inativa'
     expect(page).to have_content "Domínio de e-mail: #{sc2.email_domain}"
   end
 end
