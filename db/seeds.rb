@@ -6,8 +6,8 @@ puts 'creating => admins'.bg_green
 
 unconfirmed_admin = Admin.create!(email: 'manoel_unconfirmed@sistemadefrete.com.br', password: '123456', name: 'Manoel')
 print '.'.green
-confirmed_admin = Admin.create!(email: 'ligia_confirmed@sistemadefrete.com.br', password: '123456',
-                                name: 'Lígia').confirm
+confirmed_admin = Admin.create!(email: 'ligia_confirmed@sistemadefrete.com.br', password: '123456', name: 'Lígia')
+confirmed_admin.confirm
 print ". DONE\n".green
 
 puts 'creating => shipping_companies'.bg_green
@@ -17,15 +17,13 @@ inactive_shipping_company1 = ShippingCompany.create!(name: 'Frete do Seu João',
                                                      corporate_name: 'FRETE DO SEU JOÃO LTDA',
                                                      email_domain: 'seujoaofrete.com.br',
                                                      cnpj: '06.902.995/0001-62',
-                                                     billing_adress: 'Rua do Seu João, 86',
-                                                     active: false)
+                                                     billing_adress: 'Rua do Seu João, 86')
 print '.'.green
 inactive_shipping_company2 = ShippingCompany.create!(name: 'Frete do Seu Meireles',
                                                      corporate_name: 'FRETE DO SEU MEIRELES LTDA',
                                                      email_domain: 'seumeirelesfrete.com.br',
                                                      cnpj: '06.902.995/0001-63',
-                                                     billing_adress: 'Rua do Seu Meireles, 56',
-                                                     active: false)
+                                                     billing_adress: 'Rua do Seu Meireles, 56')
 print '.'.green
 active_shipping_company1 = ShippingCompany.create!(name: 'Frete da Dona Catarina',
                                                    email_domain: 'donacatarinafrete.com.br',
@@ -171,4 +169,127 @@ vehicle7 = Vehicle.create!(plate: '4913-ALF', brand_model: 'Audi - Discovery', y
 print '.'.green
 vehicle8 = Vehicle.create!(plate: '0302-GLO', brand_model: 'Volksvagem - Trooper 7.667', year: '2023',
                            weight_capacity: 12_500, shipping_company: active_shipping_company2)
+print ". DONE\n".green
+
+puts 'creating => orders'.bg_green
+puts 'OBS: one order per status for each company (so four for each)'.red.bg_gray
+
+# Frete do Seu João
+order1 = Order.create!(admin: confirmed_admin, weight: 10, shipping_company: inactive_shipping_company1,
+                       distance: 95, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
+print '.'.green
+order2 = Order.create!(admin: confirmed_admin, weight: 15, shipping_company: inactive_shipping_company1,
+                       distance: 75, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                       product_code: 'SOMTHIN-ELSE', width: 4, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'ativa')
+print '.'.green
+order3 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: inactive_shipping_company1,
+                       distance: 150, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                       product_code: 'SOMTHIN-MORE', width: 2, height: 1, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'finalizada')
+print '.'.green
+order4 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: inactive_shipping_company1,
+                       distance: 150, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-OTHER', width: 4, height: 2, depth: 5,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'cancelada')
+inactive_shipping_company1.toggle(:active)
+print '.'.green
+# Frete do Seu Meireles
+order5 = Order.create!(admin: unconfirmed_admin, weight: 700, shipping_company: inactive_shipping_company2,
+                       distance: 95, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
+print '.'.green
+order6 = Order.create!(admin: confirmed_admin, weight: 15, shipping_company: inactive_shipping_company2,
+                       distance: 75, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                       product_code: 'SOMTHIN-ELSE', width: 4, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'ativa')
+print '.'.green
+order7 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: inactive_shipping_company2,
+                       distance: 98, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                       product_code: 'SOMTHIN-MORE', width: 2, height: 1, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'finalizada')
+print '.'.green
+order8 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: inactive_shipping_company2,
+                       distance: 26, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-OTHER', width: 4, height: 2, depth: 5,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'cancelada')
+inactive_shipping_company2.toggle(:active)
+print '.'.green
+# Frete da Dona Catarina
+order9 = Order.create!(admin: confirmed_admin, weight: 700, shipping_company: active_shipping_company1,
+                       distance: 20, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
+print '.'.green
+order10 = Order.create!(admin: confirmed_admin, weight: 15, shipping_company: active_shipping_company1,
+                        distance: 50, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                        product_code: 'SOMTHIN-ELSE', width: 4, height: 2, depth: 2,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'ativa')
+print '.'.green
+order11 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: active_shipping_company1,
+                        distance: 75, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                        product_code: 'SOMTHIN-MORE', width: 2, height: 1, depth: 2,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'finalizada')
+print '.'.green
+order12 = Order.create!(admin: confirmed_admin, weight: 40, shipping_company: active_shipping_company1,
+                        distance: 115, pickup_adress: 'Rua de Retirada, 45',
+                        product_code: 'SOMTHIN-OTHER', width: 4, height: 2, depth: 5,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'cancelada')
+print '.'.green
+# Frete da Dona Paula
+order9 = Order.create!(admin: confirmed_admin, weight: 700, shipping_company: active_shipping_company2,
+                       distance: 50, pickup_adress: 'Rua de Retirada, 45',
+                       product_code: 'SOMTHIN-098', width: 1, height: 3, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
+print '.'.green
+order10 = Order.create!(admin: confirmed_admin, weight: 15, shipping_company: active_shipping_company2,
+                        distance: 100, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                        product_code: 'SOMTHIN-ELSE', width: 4, height: 2, depth: 5,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'ativa')
+print '.'.green
+order11 = Order.create!(admin: confirmed_admin, weight: 60, shipping_company: active_shipping_company2,
+                        distance: 170, pickup_adress: 'Rua de Retirada, 45', vehicle_id: vehicle1.id,
+                        product_code: 'SOMTHIN-MORE', width: 2, height: 1, depth: 2,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'finalizada')
+print '.'.green
+order12 = Order.create!(admin: confirmed_admin, weight: 120, shipping_company: active_shipping_company2,
+                        distance: 230, pickup_adress: 'Rua de Retirada, 45',
+                        product_code: 'SOMTHIN-OTHER', width: 4, height: 2, depth: 5,
+                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86', status: 'cancelada')
+print ". DONE\n".green
+
+puts 'creating => update_lines'.bg_green
+
+# Order 2
+update_line1 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order2)
+print '.'.green
+update_line2 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order2)
+print '.'.green
+# Order 3
+update_line3 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order3)
+print '.'.green
+update_line4 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order3)
+print '.'.green
+# Order 6
+update_line5 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order6)
+print '.'.green
+update_line6 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order6)
+print '.'.green
+# Order 7
+update_line7 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order7)
+print '.'.green
+update_line8 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order7)
+print '.'.green
+# Order 10
+update_line9 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order10)
+print '.'.green
+update_line10 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order10)
+print '.'.green
+# Order 11
+update_line11 = UpdateLine.create!(coordinates: '87.98465, 8.65498', order: order11)
+print '.'.green
+update_line12 = UpdateLine.create!(coordinates: '78.64895, 4.78985', order: order11)
 print ". DONE\n".green

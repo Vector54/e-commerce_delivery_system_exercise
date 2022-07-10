@@ -11,13 +11,11 @@ class Order < ApplicationRecord
   validates :date, :value, :pickup_adress, :delivery_adress, :product_code, :width, :height, :depth, :cpf,
             presence: true
   validates :cpf, format: { with: /\A\d{3}\.\d{3}\.\d{3}-\d{2}\z/ }
-  before_create :set_status, :set_code
+  before_create :set_code
 
   private
 
-  def set_status
-    self.status = 0
-  end
+  # Lacking admin confirmation validation
 
   def set_date
     delivery_times_array = DeliveryTimeLine.where(delivery_time_table: shipping_company.delivery_time_table)
@@ -45,6 +43,7 @@ class Order < ApplicationRecord
         miw = pl.minimum_weight
         maw = pl.maximum_weight
         if miv < volume && mav > volume && miw < weight && maw > weight
+          # Weight validation doesn't seem to be working
           self.value = pl.value * distance
         elsif volume < miv || weight < miw
           self.value = price_table.minimum_value * distance
@@ -58,7 +57,7 @@ class Order < ApplicationRecord
   end
 
   def shipping_company_cant_be_inactive
-    errors.add(:shipping_company, 'Transportadora não está ativa.') if shipping_company.active == false
+    errors.add(:shipping_company, ' não está ativa.') unless shipping_company.active?
   end
 
   def vehicle_present_when_active
