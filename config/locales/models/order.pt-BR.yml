@@ -4,5 +4,4 @@ pt-BR:
       order: 'Ordem de Serviço'
     attributes:
       order:
-        statuses:
-          pending: 'pendente'
+        product_code: 'Código do Produto'

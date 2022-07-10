@@ -86,7 +86,7 @@ describe 'Usuário acessa detalhe de uma OS' do
     select v.plate, from: 'Veículo'
     click_on 'Aceitar'
 
-    expect(page).to have_content "#{ul.created_at} -------------- #{ul.coordinates}"
+    expect(page).to have_content "#{I18n.l(ul.created_at)} -------------- #{ul.coordinates}"
     expect(page).to have_button 'Atualizar'
     expect(page).to have_field 'Latitude'
     expect(page).to have_field 'Longitude'
@@ -182,13 +182,17 @@ describe 'Usuário acessa detalhe de uma OS' do
   end
 
   it 'e faz uma atualização' do
+    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
+    a.confirm
+    a.save
+
     sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
                                  email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
-    a.confirm
-    a.save
+    u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
+    u.confirm
+    u.save
 
     dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
                                    delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
@@ -199,43 +203,37 @@ describe 'Usuário acessa detalhe de uma OS' do
     v =  Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
                          weight_capacity: 8_800_000, shipping_company: sc)
 
-    os = Order.create!(admin: a, weight: 10, shipping_company: sc,
-                       distance: 95, pickup_adress: 'Rua de Retirada, 45',
+    os = Order.create!(admin: a, weight: 10, shipping_company: sc, vehicle_id: v.id,
+                       distance: 95, pickup_adress: 'Rua de Retirada, 45', status: 'ativa',
                        product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
-
-    u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
-    u.confirm
-    u.save
 
     login_as u
     visit root_path
     click_on 'Ordens de Serviço'
     click_on os.code
-    select v.plate, from: 'Veículo'
-    click_on 'Aceitar'
     fill_in 'Latitude', with: '4658765'
     fill_in 'Longitude', with: '5751654'
     click_on 'Atualizar'
 
     ul = UpdateLine.last
     expect(ul.coordinates).not_to be_empty
-    expect(page).to have_content "#{ul.created_at} -------------- #{ul.coordinates}"
-    expect(page).to have_button 'Atualizar'
-    expect(page).to have_field 'Latitude'
-    expect(page).to have_field 'Longitude'
-    expect(page).to have_button 'Finalizar'
-    expect(page).to have_button 'Cancelar'
+    expect(page).to have_content "#{I18n.l(ul.created_at)} -------------- #{ul.coordinates}"
+    expect(page).to have_content 'OS atualizada com sucesso.'
   end
 
-  it 'e finaliza uma OS' do
+  it 'e faz uma atualização sem sucesso' do
+    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
+    a.confirm
+    a.save
+
     sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
                                  email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
-    a.confirm
-    a.save
+    u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
+    u.confirm
+    u.save
 
     dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
                                    delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
@@ -246,24 +244,54 @@ describe 'Usuário acessa detalhe de uma OS' do
     v =  Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
                          weight_capacity: 8_800_000, shipping_company: sc)
 
-    os = Order.create!(admin: a, weight: 10, shipping_company: sc,
-                       distance: 95, pickup_adress: 'Rua de Retirada, 45',
+    os = Order.create!(admin: a, weight: 10, shipping_company: sc, vehicle_id: v.id,
+                       distance: 95, pickup_adress: 'Rua de Retirada, 45', status: 'ativa',
                        product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
                        delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
-
-    u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
-    u.confirm
-    u.save
 
     login_as u
     visit root_path
     click_on 'Ordens de Serviço'
     click_on os.code
-    select v.plate, from: 'Veículo'
-    click_on 'Aceitar'
-    fill_in 'Latitude', with: '4658765'
+    fill_in 'Latitude', with: 'abc'
     fill_in 'Longitude', with: '5751654'
     click_on 'Atualizar'
+
+    expect(UpdateLine.all).to be_empty
+    expect(page).to have_content 'Falha na Atualização: Coordenadas têm formato inválido'
+  end
+
+  it 'e finaliza uma OS' do
+    a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
+    a.confirm
+    a.save
+
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
+
+    u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
+    u.confirm
+    u.save
+
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
+                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+
+    pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
+                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+
+    v =  Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
+                         weight_capacity: 8_800_000, shipping_company: sc)
+
+    os = Order.create!(admin: a, weight: 10, shipping_company: sc, vehicle_id: v.id,
+                       distance: 95, pickup_adress: 'Rua de Retirada, 45', status: 'ativa',
+                       product_code: 'SOMTHIN-098', width: 1, height: 2, depth: 2,
+                       delivery_adress: 'Rua de Entrega, 54', cpf: '568.568.568-86')
+
+    login_as u
+    visit root_path
+    click_on 'Ordens de Serviço'
+    click_on os.code
     click_on 'Finalizar'
 
     expect(page).to have_content 'Status - finalizada'

@@ -44,7 +44,8 @@ class ShippingCompaniesController < ApplicationController
     if @shipping_company.update(parameters)
       redirect_to shipping_company_path(id), notice: t('.success')
     else
-      flash[:alert] = t('.failure')
+      errors = @shipping_company.errors.full_messages.join(',')
+      flash[:alert] = t('.failure') + errors
       render 'edit'
     end
   end
@@ -54,13 +55,9 @@ class ShippingCompaniesController < ApplicationController
     param_status = params.permit(:active)
 
     @shipping_company = ShippingCompany.find(id)
+    @shipping_company.update(param_status)
 
-    if @shipping_company.update(param_status)
-      redirect_to shipping_company_path(id), notice: t('.success')
-    else
-      flash[:alert] = t('.failure')
-      render 'edit'
-    end
+    redirect_to shipping_company_path(id), notice: t('.success')
   end
 
   def budget_query; end

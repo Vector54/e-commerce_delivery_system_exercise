@@ -29,14 +29,15 @@ class OrderController < ApplicationController
     order_parameters = params.require(:order).permit(:pickup_adress, :product_code, :width,
                                                      :height, :depth, :delivery_adress,
                                                      :cpf, :weight, :delivery_adress, :distance)
-    @new_order = Order.new(order_parameters)
-    @new_order.admin = current_admin
-    @new_order.shipping_company = ShippingCompany.find(id)
+    @order = Order.new(order_parameters)
+    @order.admin = current_admin
+    @order.shipping_company = ShippingCompany.find(id)
 
-    if @new_order.save
-      redirect_to order_path(@new_order.id), notice: t('.success')
+    if @order.save
+      redirect_to order_path(@order.id), notice: t('.success')
     else
-      flash.now[:alert] = t('.failure')
+      errors = @order.errors.full_messages.join(', ')
+      flash.now[:alert] = t('.failure') + errors
       render 'new'
     end
   end
@@ -45,11 +46,14 @@ class OrderController < ApplicationController
     raw_line_params = params.permit(:latitude, :longitude, :order)
     str_line_params = "#{raw_line_params[:latitude]}, #{raw_line_params[:longitude]}"
 
-    ul = UpdateLine.new(coordinates: str_line_params)
-    ul.order = Order.find(raw_line_params[:order].to_i)
-    ul.save!
+    update_line = UpdateLine.new(coordinates: str_line_params, order_id: raw_line_params[:order])
 
-    redirect_to order_path(ul.order.id)
+    if update_line.save
+      redirect_to order_path(update_line.order.id), notice: t('.success')
+    else
+      errors = update_line.errors.full_messages.join(', ')
+      redirect_to order_path(update_line.order.id), notice: t('.failure') + errors
+    end
   end
 
   def update
