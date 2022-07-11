@@ -42,11 +42,11 @@ describe 'Admin acessa tela de cadastro de OS' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                           maximum_weight: 50, value: 150, price_table: PriceTable.find_by(shipping_company: sc))
+                                       maximum_weight: 50, value: 150, shipping_company: sc)
 
     visit root_path
     click_on 'Admin'
@@ -93,11 +93,11 @@ describe 'Admin acessa tela de cadastro de OS' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                           maximum_weight: 50, value: 150, price_table: PriceTable.find_by(shipping_company: sc))
+                                   maximum_weight: 50, value: 150, shipping_company: sc)
 
     visit root_path
     click_on 'Admin'

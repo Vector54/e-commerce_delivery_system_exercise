@@ -12,11 +12,11 @@ describe 'Admin acessa index de OSs de uma transportadora' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                                       maximum_weight: 50, value: 100, shipping_company: sc)
 
     os = Order.create!(admin: a, code: '456ASD123FGH789', weight: 10,
                        shipping_company: sc, distance: 95, pickup_adress: 'Rua de Retirada, 45',
@@ -45,11 +45,11 @@ describe 'Admin acessa index de OSs de uma transportadora' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                                   maximum_weight: 50, value: 100, shipping_company: sc)
 
     os = Order.create!(admin: a, code: '456ASD123FGH789', weight: 10,
                        shipping_company: sc, distance: 95, pickup_adress: 'Rua de Retirada, 45',
