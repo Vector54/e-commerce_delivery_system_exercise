@@ -2,7 +2,7 @@
 
 class ShippingCompaniesController < ApplicationController
   before_action :authenticate_admin!, only: %i[new index budget_query budget_response]
-  before_action :visit_blocker, only: [:show, :minimum_value_update]
+  before_action :visit_blocker, only: %i[show minimum_value_update]
 
   def index
     @shipping_companies = ShippingCompany.all

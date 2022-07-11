@@ -39,11 +39,10 @@ describe 'Visitante acessa a tela inicial' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, 
-                                   delivery_time: 2, shipping_company: sc)
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                                   maximum_weight: 50, value: 100, shipping_company: sc)
+                           maximum_weight: 50, value: 100, shipping_company: sc)
 
     os = Order.create!(admin: a, weight: 10,
                        shipping_company: sc, distance: 95, pickup_adress: 'Rua de Retirada, 45',
@@ -69,11 +68,10 @@ describe 'Visitante acessa a tela inicial' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, 
-                                   delivery_time: 2, shipping_company: sc)
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                                   maximum_weight: 50, value: 100, shipping_company: sc)
+                           maximum_weight: 50, value: 100, shipping_company: sc)
 
     os = Order.create!(admin: a, weight: 10,
                        shipping_company: sc, distance: 95, pickup_adress: 'Rua de Retirada, 45',

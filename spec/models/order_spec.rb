@@ -10,8 +10,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -36,8 +35,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -69,8 +67,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -92,8 +89,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -115,8 +111,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -138,8 +133,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -161,8 +155,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -184,8 +177,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -207,8 +199,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -230,8 +221,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -253,8 +243,7 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -277,11 +266,10 @@ RSpec.describe Order, type: :model do
                                    email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                    billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                     delivery_time: 2, shipping_company: sc)
+      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
       pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, shipping_company: sc)
+                             maximum_weight: 50, value: 100, shipping_company: sc)
 
       a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
       a.confirm
@@ -300,8 +288,7 @@ RSpec.describe Order, type: :model do
                                    email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                    billing_adress: 'Rua do Seu Carlos, 86', active: false)
 
-      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                     delivery_time: 2, shipping_company: sc)
+      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
       pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                              maximum_weight: 50, value: 100, shipping_company: sc)
@@ -328,8 +315,7 @@ RSpec.describe Order, type: :model do
         a.confirm
         a.save
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -354,8 +340,7 @@ RSpec.describe Order, type: :model do
         a.confirm
         a.save
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
-                                       delivery_time: 2, shipping_company: sc)
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                                maximum_weight: 50, value: 100, shipping_company: sc)
@@ -390,15 +375,13 @@ RSpec.describe Order, type: :model do
                                    email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                    billing_adress: 'Rua do Seu Carlos, 86', minimum_value: 25)
 
-      dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-                                        delivery_time: 2, shipping_company: sc)
+      dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, shipping_company: sc)
 
       pl1_1 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5,
                                 maximum_weight: 50, value: 100, shipping_company: sc)
-                                
-      dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-                                        delivery_time: 4, shipping_company: sc)
-                                        
+
+      dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, shipping_company: sc)
+
       pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                                 maximum_weight: 70, value: 150, shipping_company: sc)
 

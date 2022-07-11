@@ -49,7 +49,7 @@ describe 'Usuário acessa link para registrar nova linha da tabela de prazo' do
     sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
                                  email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
-                                  
+
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
     u.save

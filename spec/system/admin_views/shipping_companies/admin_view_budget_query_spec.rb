@@ -36,26 +36,22 @@ describe 'Admin acessa página de consulta' do
     a.confirm
     a.save
 
-    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-                                      delivery_time: 2, shipping_company: sc)
+    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, shipping_company: sc)
 
     pl1_1 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 100, shipping_company: sc)
 
-    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 4, shipping_company: sc)
+    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, shipping_company: sc)
 
     pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 150, shipping_company: sc)
 
-    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 3, shipping_company: sc2)
+    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3, shipping_company: sc2)
 
     pl1_2 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 50, shipping_company: sc2)
 
-    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 6, shipping_company: sc2)
+    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6, shipping_company: sc2)
 
     pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 100, shipping_company: sc2)
@@ -93,26 +89,22 @@ describe 'Admin acessa página de consulta' do
     a.confirm
     a.save
 
-    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 2, shipping_company: sc)
+    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, shipping_company: sc)
 
     pl1_1 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 100, shipping_company: sc)
 
-    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 4, shipping_company: sc)
+    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, shipping_company: sc)
 
     pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 150, shipping_company: sc)
 
-    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 3, shipping_company: sc2)
+    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3, shipping_company: sc2)
 
     pl1_2 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 50, shipping_company: sc2)
 
-    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 6, shipping_company: sc2)
+    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6, shipping_company: sc2)
 
     pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 100, shipping_company: sc2)
@@ -146,26 +138,22 @@ describe 'Admin acessa página de consulta' do
     a.confirm
     a.save
 
-    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 2, shipping_company: sc)
+    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, shipping_company: sc)
 
     pl1_1 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 100, shipping_company: sc)
 
-    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 4, shipping_company: sc)
+    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, shipping_company: sc)
 
     pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 150, shipping_company: sc)
 
-    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 3, shipping_company: sc2)
+    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3, shipping_company: sc2)
 
     pl1_2 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 50, shipping_company: sc2)
 
-    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 6, shipping_company: sc2)
+    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6, shipping_company: sc2)
 
     pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 100, shipping_company: sc2)
@@ -199,26 +187,22 @@ describe 'Admin acessa página de consulta' do
     a.confirm
     a.save
 
-    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 2, shipping_company: sc)
+    dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2, shipping_company: sc)
 
     pl1_1 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 100, shipping_company: sc)
 
-    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 4, shipping_company: sc)
+    dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4, shipping_company: sc)
 
     pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 150, shipping_company: sc)
 
-    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
-    delivery_time: 3, shipping_company: sc2)
+    dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3, shipping_company: sc2)
 
     pl1_2 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5,
                               maximum_weight: 50, value: 50, shipping_company: sc2)
 
-    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
-    delivery_time: 6, shipping_company: sc2)
+    dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6, shipping_company: sc2)
 
     pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
                               maximum_weight: 70, value: 100, shipping_company: sc2)

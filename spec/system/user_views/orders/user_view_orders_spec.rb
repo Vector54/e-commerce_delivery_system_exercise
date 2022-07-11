@@ -12,8 +12,7 @@ describe 'Usuário acessa index de OSs' do
     a.confirm
     a.save
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, 
-                                   delivery_time: 2, shipping_company: sc)
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
     pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
                            maximum_weight: 50, value: 100, shipping_company: sc)
