@@ -2,7 +2,7 @@
 
 class ShippingCompaniesController < ApplicationController
   before_action :authenticate_admin!, only: %i[new index budget_query budget_response]
-  before_action :visit_blocker, only: :show
+  before_action :visit_blocker, only: [:show, :minimum_value_update]
 
   def index
     @shipping_companies = ShippingCompany.all
@@ -51,6 +51,7 @@ class ShippingCompaniesController < ApplicationController
   end
 
   def status_change
+    # could be set directly on update
     id = params[:id]
     param_status = params.permit(:active)
 
@@ -58,6 +59,16 @@ class ShippingCompaniesController < ApplicationController
     @shipping_company.update(param_status)
 
     redirect_to shipping_company_path(id), notice: t('.success')
+  end
+
+  def minimum_value_update
+    id = params[:id]
+    parameters = params.require(:shipping_company).permit(:minimum_value)
+    @shipping_company = ShippingCompany.find(id)
+    formated_value = parameters[:minimum_value].tr(',', '').to_i
+    @shipping_company.update!('minimum_value' => formated_value.to_s)
+
+    redirect_to shipping_company_price_table_index_path(@shipping_company)
   end
 
   def budget_query; end

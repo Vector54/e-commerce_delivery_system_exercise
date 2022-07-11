@@ -12,7 +12,7 @@ class DeliveryTimeLineController < ApplicationController
                                                                            :delivery_time)
 
     @delivery_time_line = DeliveryTimeLine.new(delivery_time_line_params)
-    @delivery_time_line.delivery_time_table = current_user.shipping_company.delivery_time_table
+    @delivery_time_line.shipping_company = current_user.shipping_company
     if @delivery_time_line.save
       redirect_to shipping_company_delivery_time_table_index_path(current_user.shipping_company)
     else
@@ -27,8 +27,7 @@ class DeliveryTimeLineController < ApplicationController
     @delivery_time_line = DeliveryTimeLine.find(id)
     @delivery_time_line.delete
 
-    redirect_to shipping_company_delivery_time_table_index_path(@delivery_time_line
-                                                                .delivery_time_table.shipping_company_id)
+    redirect_to shipping_company_delivery_time_table_index_path(@delivery_time_line.shipping_company)
   end
 
   private

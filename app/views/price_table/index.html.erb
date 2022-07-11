@@ -14,9 +14,9 @@
   <%end%>
 </table> 
 
-<strong>Valor mínimo = R$<%=money_format(@price_table.minimum_value)%> </strong>
+<strong>Valor mínimo = R$<%=money_format(@shipping_company.minimum_value)%> </strong>
 <div>
-  <%= form_with model: @price_table, method: :patch do |f|%>
+  <%= form_with model: @shipping_company, url: "/shipping_companies/#{@shipping_company.id}/minimum_value_update", method: :patch do |f|%>
     <%= f.label :minimum_value, 'Novo preço mínimo'%>
     <%= f.number_field :minimum_value, autocomplete: 'XX,XX'%>
     <%= f.submit 'Atualizar'%>
@@ -24,4 +24,4 @@
 
 </div>
 
-<%=link_to 'Cadastrar Linha', new_shipping_company_price_line_path(@price_table.shipping_company.id)%>
+<%=link_to 'Cadastrar Linha', new_shipping_company_price_line_path(@shipping_company)%>

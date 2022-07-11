@@ -9,10 +9,10 @@ describe 'Usuário acessa link de tabela de preço' do
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     pl = PriceLine.create!(minimum_volume: 100, maximum_volume: 5000, minimum_weight: 10,
-                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                           maximum_weight: 50, value: 100, shipping_company: sc)
 
     pl2 = PriceLine.create!(minimum_volume: 5001, maximum_volume: 10_000, minimum_weight: 51,
-                            maximum_weight: 100, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
+                            maximum_weight: 100, value: 200, shipping_company: sc)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -42,10 +42,10 @@ describe 'Usuário acessa link de tabela de preço' do
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     pl = PriceLine.create!(minimum_volume: 100, maximum_volume: 5000, minimum_weight: 10,
-                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                           maximum_weight: 50, value: 100, shipping_company: sc)
 
     pl2 = PriceLine.create!(minimum_volume: 5001, maximum_volume: 10_000, minimum_weight: 51,
-                            maximum_weight: 100, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
+                            maximum_weight: 100, value: 200, shipping_company: sc)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -77,10 +77,10 @@ describe 'Usuário acessa link de tabela de preço' do
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     pl = PriceLine.create!(minimum_volume: 100, maximum_volume: 5000, minimum_weight: 10,
-                           maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                           maximum_weight: 50, value: 100, shipping_company: sc)
 
     pl2 = PriceLine.create!(minimum_volume: 5001, maximum_volume: 10_000, minimum_weight: 51,
-                            maximum_weight: 100, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
+                            maximum_weight: 100, value: 200, shipping_company: sc)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
