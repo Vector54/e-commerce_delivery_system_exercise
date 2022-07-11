@@ -18,7 +18,7 @@ class Order < ApplicationRecord
   # Lacking admin confirmation validation
 
   def set_date
-    delivery_times_array = DeliveryTimeLine.where(delivery_time_table: shipping_company.delivery_time_table)
+    delivery_times_array = DeliveryTimeLine.where(shipping_company: shipping_company)
     unless distance.nil? || delivery_times_array.empty?
 
       delivery_times_array.each do |dtl|
@@ -31,8 +31,7 @@ class Order < ApplicationRecord
   end
 
   def set_value
-    price_table = PriceTable.find_by(shipping_company: shipping_company)
-    price_line_array = PriceLine.where(price_table: price_table)
+    price_line_array = PriceLine.where(shipping_company: shipping_company)
 
     unless distance.nil? || price_line_array.empty? || width.nil? || height.nil? || depth.nil?
       volume = width * height * depth
@@ -46,7 +45,7 @@ class Order < ApplicationRecord
           # Weight validation doesn't seem to be working
           self.value = pl.value * distance
         elsif volume < miv || weight < miw
-          self.value = price_table.minimum_value * distance
+          self.value = shipping_company.minimum_value * distance
         end
       end
     end

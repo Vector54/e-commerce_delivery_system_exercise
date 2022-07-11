@@ -14,7 +14,7 @@ class DeliveryTimeLine < ApplicationRecord
   end
 
   def cannot_intersect_with_other_ranges
-    delivery_time_lines = DeliveryTimeLine.where(shipping_company_id: self.shipping_company_id)
+    delivery_time_lines = DeliveryTimeLine.where(shipping_company: shipping_company)
     if delivery_time_lines.any?
       delivery_time_lines.each do |dtl|
         next unless (init_distance > dtl.init_distance && init_distance < dtl.final_distance) ||

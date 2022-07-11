@@ -10,11 +10,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -36,12 +36,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
+                               maximum_weight: 50, value: 100, shipping_company: sc)
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
         a.save
@@ -70,11 +69,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -93,11 +92,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -116,11 +115,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -139,11 +138,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -162,11 +161,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -185,11 +184,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -208,11 +207,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -231,11 +230,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -254,11 +253,11 @@ RSpec.describe Order, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
         a.confirm
@@ -278,11 +277,11 @@ RSpec.describe Order, type: :model do
                                    email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                    billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                     delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                     delivery_time: 2, shipping_company: sc)
 
       pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                             maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
       a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
       a.confirm
@@ -299,14 +298,13 @@ RSpec.describe Order, type: :model do
     it 'when shipping company is not active, should give false' do
       sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
                                    email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
-                                   billing_adress: 'Rua do Seu Carlos, 86', active: true)
-      sc.update('active' => 'false')
+                                   billing_adress: 'Rua do Seu Carlos, 86', active: false)
 
-      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, delivery_time: 2,
-                                     delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+      dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                     delivery_time: 2, shipping_company: sc)
 
       pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                             maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                             maximum_weight: 50, value: 100, shipping_company: sc)
 
       a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
       a.confirm
@@ -330,11 +328,11 @@ RSpec.describe Order, type: :model do
         a.confirm
         a.save
 
-        dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         v = Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
                             weight_capacity: 8800, shipping_company: sc)
@@ -356,11 +354,11 @@ RSpec.describe Order, type: :model do
         a.confirm
         a.save
 
-        dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                       delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = DeliveryTimeLine.create!(init_distance: 10, final_distance: 100, 
+                                       delivery_time: 2, shipping_company: sc)
 
         pl = PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
-                               maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
+                               maximum_weight: 50, value: 100, shipping_company: sc)
 
         v = Vehicle.create!(plate: '8585-POU', brand_model: 'Volksvagem - Delivery 9.170', year: '2022',
                             weight_capacity: 8800, shipping_company: sc)
@@ -384,42 +382,25 @@ RSpec.describe Order, type: :model do
 
   describe 'Minimum value' do
     it 'is taken into account' do
-      sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
-                                   email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
-                                   billing_adress: 'Rua do Seu Carlos, 86')
-
-      PriceTable.find_by(shipping_company: sc).update!('minimum_value' => '25')
-      sc2 = ShippingCompany.create!(name: 'Frete do Seu Meireles', corporate_name: 'FRETE DO SEU MEIRELES LTDA',
-                                    email_domain: 'seumeirelesfrete.com.br', cnpj: '06.902.578/0001-57',
-                                    billing_adress: 'Rua do Seu Meireles, 68')
-      PriceTable.find_by(shipping_company: sc2).update!('minimum_value' => '25')
       a = Admin.new(email: 'teste@sistemadefrete.com.br', password: 'password456')
       a.confirm
       a.save
 
-      dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2,
-                                        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+      sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                   email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                   billing_adress: 'Rua do Seu Carlos, 86', minimum_value: 25)
+
+      dtl1_1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, 
+                                        delivery_time: 2, shipping_company: sc)
 
       pl1_1 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5,
-                                maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-      dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4,
-                                        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
-
+                                maximum_weight: 50, value: 100, shipping_company: sc)
+                                
+      dtl2_1 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, 
+                                        delivery_time: 4, shipping_company: sc)
+                                        
       pl2_1 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
-                                maximum_weight: 70, value: 150, price_table: PriceTable.find_by(shipping_company: sc))
-
-      dtl1_2 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 3,
-                                        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc2))
-
-      pl1_2 = PriceLine.create!(minimum_volume: 5, maximum_volume: 50, minimum_weight: 5,
-                                maximum_weight: 50, value: 50, price_table: PriceTable.find_by(shipping_company: sc2))
-
-      dtl2_2 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 6,
-                                        delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc2))
-
-      pl2_2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
-                                maximum_weight: 70, value: 100, price_table: PriceTable.find_by(shipping_company: sc2))
+                                maximum_weight: 70, value: 150, shipping_company: sc)
 
       os = described_class.create!(admin: a, weight: 10,
                                    shipping_company: sc, distance: 75, pickup_adress: 'Rua de Retirada, 45',
