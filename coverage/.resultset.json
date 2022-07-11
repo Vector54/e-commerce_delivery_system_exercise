@@ -236,11 +236,6 @@
           null,
           1,
           null,
-          1,
-          null,
-          1,
-          113,
-          null,
           null
         ]
       },
@@ -260,16 +255,6 @@
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/victor/Treinadev8/e-commerce_delivery_system/app/models/delivery_time_table.rb": {
-        "lines": [
-          null,
-          null,
           1,
           1,
           1,
@@ -742,20 +727,8 @@
           null,
           null
         ]
-      },
-      "/home/victor/Treinadev8/e-commerce_delivery_system/app/models/price_table.rb": {
-        "lines": [
-          null,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1657580973
+    "timestamp": 1657581848
   }
 }

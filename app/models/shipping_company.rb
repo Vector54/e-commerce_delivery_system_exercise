@@ -9,11 +9,6 @@ class ShippingCompany < ApplicationRecord
   has_one :price_table, dependent: :destroy
   has_one :delivery_time_table, dependent: :destroy
 
-  after_create :set_delivery_time_table
-
   private
 
-  def set_delivery_time_table
-    DeliveryTimeTable.create(shipping_company: self)
-  end
 end

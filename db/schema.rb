@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_11_213112) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_232132) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -36,13 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_213112) do
     t.datetime "updated_at", null: false
     t.integer "shipping_company_id", null: false
     t.index ["shipping_company_id"], name: "index_delivery_time_lines_on_shipping_company_id"
-  end
-
-  create_table "delivery_time_tables", force: :cascade do |t|
-    t.integer "shipping_company_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shipping_company_id"], name: "index_delivery_time_tables_on_shipping_company_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -79,14 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_213112) do
     t.datetime "updated_at", null: false
     t.integer "shipping_company_id", null: false
     t.index ["shipping_company_id"], name: "index_price_lines_on_shipping_company_id"
-  end
-
-  create_table "price_tables", force: :cascade do |t|
-    t.integer "shipping_company_id", null: false
-    t.integer "minimum_value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shipping_company_id"], name: "index_price_tables_on_shipping_company_id"
   end
 
   create_table "shipping_companies", force: :cascade do |t|
@@ -141,11 +126,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_213112) do
   end
 
   add_foreign_key "delivery_time_lines", "shipping_companies"
-  add_foreign_key "delivery_time_tables", "shipping_companies"
   add_foreign_key "orders", "admins"
   add_foreign_key "orders", "shipping_companies"
   add_foreign_key "price_lines", "shipping_companies"
-  add_foreign_key "price_tables", "shipping_companies"
   add_foreign_key "update_lines", "orders"
   add_foreign_key "users", "shipping_companies"
   add_foreign_key "vehicles", "shipping_companies"
