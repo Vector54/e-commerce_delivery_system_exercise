@@ -4,9 +4,8 @@ class DeliveryTimeTableController < ApplicationController
   before_action :visit_blocker
 
   def index
-    id = params[:shipping_company_id]
-    @delivery_time_table = DeliveryTimeTable.find_by(shipping_company: ShippingCompany.find(id))
-    @delivery_time_lines = DeliveryTimeLine.where(delivery_time_table: @delivery_time_table)
+    @shipping_company_id = params[:shipping_company_id]
+    @delivery_time_lines = DeliveryTimeLine.where(shipping_company_id: @shipping_company_id)
   end
 
   private

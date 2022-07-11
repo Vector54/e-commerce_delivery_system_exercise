@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PriceLine < ApplicationRecord
-  belongs_to :price_table
+  belongs_to :shipping_company
   validates :minimum_volume, :maximum_volume, :minimum_weight, :maximum_weight, :value, presence: true
   validate :minimum_volume_bigger_than_maximum_volume, :data_intersection, :minimum_weight_bigger_than_maximum_weight
 
@@ -20,8 +20,8 @@ class PriceLine < ApplicationRecord
   end
 
   def data_intersection
-    if PriceLine.where(price_table: price_table).any?
-      price_line_array = PriceLine.where(price_table: price_table)
+    price_line_array = PriceLine.where(shipping_company: shipping_company)
+    if price_line_array.any?
 
       price_line_array.each do |pl|
         next unless ((minimum_volume > pl.minimum_volume && minimum_volume < pl.maximum_volume) ||

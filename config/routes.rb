@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'budget_query', on: :collection
     get 'budget_response', on: :collection
     patch 'status_change', on: :member
+    patch 'minimum_value_update', on: :member
   end
   get '/search', to: 'order#search'
 end

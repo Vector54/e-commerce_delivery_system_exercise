@@ -66,78 +66,62 @@ puts 'creating => price_lines'.bg_green
 
 # Frete do Seu João
 priceline1 = PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
-                               maximum_weight: 50, value: 100,
-                               price_table: PriceTable.find_by(shipping_company: inactive_shipping_company1))
+                               maximum_weight: 50, value: 100, shipping_company: inactive_shipping_company1)
 print '.'.green
 priceline2 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5,
-                               maximum_weight: 50, value: 150,
-                               price_table: PriceTable.find_by(shipping_company: inactive_shipping_company1))
+                               maximum_weight: 50, value: 150, shipping_company: inactive_shipping_company1)
 print '.'.green
 # Frete do Seu Meireles
 priceline3 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5,
-                               maximum_weight: 50, value: 100,
-                               price_table: PriceTable.find_by(shipping_company: inactive_shipping_company2))
+                               maximum_weight: 50, value: 100, shipping_company: inactive_shipping_company2)
 print '.'.green
 priceline4 = PriceLine.create!(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
-                               maximum_weight: 150, value: 200,
-                               price_table: PriceTable.find_by(shipping_company: inactive_shipping_company2))
+                               maximum_weight: 150, value: 200, shipping_company: inactive_shipping_company2)
 print '.'.green
 # Frete da Dona Catarina
 priceline5 = PriceLine.create!(minimum_volume: 20, maximum_volume: 60, minimum_weight: 12,
-                               maximum_weight: 60, value: 50,
-                               price_table: PriceTable.find_by(shipping_company: active_shipping_company1))
+                               maximum_weight: 60, value: 50, shipping_company: active_shipping_company1)
 print '.'.green
 priceline6 = PriceLine.create!(minimum_volume: 61, maximum_volume: 120, minimum_weight: 12,
-                               maximum_weight: 60, value: 150,
-                               price_table: PriceTable.find_by(shipping_company: active_shipping_company1))
+                               maximum_weight: 60, value: 150, shipping_company: active_shipping_company1)
 print '.'.green
 # Frete da Dona Paula
 priceline7 = PriceLine.create!(minimum_volume: 20, maximum_volume: 60, minimum_weight: 12,
-                               maximum_weight: 60, value: 100,
-                               price_table: PriceTable.find_by(shipping_company: active_shipping_company2))
+                               maximum_weight: 60, value: 100, shipping_company: active_shipping_company2)
 print '.'.green
 priceline8 = PriceLine.create!(minimum_volume: 20, maximum_volume: 60, minimum_weight: 61,
-                               maximum_weight: 180, value: 250,
-                               price_table: PriceTable.find_by(shipping_company: active_shipping_company2))
+                               maximum_weight: 180, value: 250, shipping_company: active_shipping_company2)
 print ". DONE\n".green
 
 puts 'creating => delivery_time_lines'.bg_green
 
 # Frete do Seu João
 delivery_time_line1 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 100, delivery_time: 2,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: inactive_shipping_company1))
+                                               shipping_company: inactive_shipping_company1)
 print '.'.green
 delivery_time_line2 = DeliveryTimeLine.create!(init_distance: 101, final_distance: 200, delivery_time: 4,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: inactive_shipping_company1))
+                                               shipping_company: inactive_shipping_company1)
 print '.'.green
 # Frete do Seu Meireles
 delivery_time_line3 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 50, delivery_time: 2,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: inactive_shipping_company2))
+                                               shipping_company: inactive_shipping_company2)
 print '.'.green
 delivery_time_line4 = DeliveryTimeLine.create!(init_distance: 51, final_distance: 100, delivery_time: 4,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: inactive_shipping_company2))
+                                               shipping_company: inactive_shipping_company2)
 print '.'.green
 # Frete da Dona Catarina
 delivery_time_line5 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 60, delivery_time: 1,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: active_shipping_company1))
+                                               shipping_company: active_shipping_company1)
 print '.'.green
 delivery_time_line6 = DeliveryTimeLine.create!(init_distance: 61, final_distance: 120, delivery_time: 3,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: active_shipping_company1))
+                                               shipping_company: active_shipping_company1)
 print '.'.green
 # Frete da Dona Paula
 delivery_time_line7 = DeliveryTimeLine.create!(init_distance: 1, final_distance: 120, delivery_time: 1,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: active_shipping_company2))
+                                               shipping_company: active_shipping_company2)
 print '.'.green
 delivery_time_line8 = DeliveryTimeLine.create!(init_distance: 121, final_distance: 240, delivery_time: 6,
-                                               delivery_time_table:
-                                               DeliveryTimeTable.find_by(shipping_company: active_shipping_company2))
+                                               shipping_company: active_shipping_company2)
 print ". DONE\n".green
 
 puts 'creating => vehicles'.bg_green

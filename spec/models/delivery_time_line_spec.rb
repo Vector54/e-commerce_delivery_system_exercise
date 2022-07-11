@@ -10,14 +10,7 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        described_class.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
-
-        described_class.create!(init_distance: 101, final_distance: 200, delivery_time: 3,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
-
-        dtl = described_class.new(init_distance: 250, final_distance: 249, delivery_time: 4,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 250, final_distance: 249, delivery_time: 4, shipping_company: sc)
 
         expect(dtl).not_to be_valid
       end
@@ -27,14 +20,11 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        described_class.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        described_class.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
-        described_class.create!(init_distance: 101, final_distance: 200, delivery_time: 3,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        described_class.create!(init_distance: 101, final_distance: 200, delivery_time: 4, shipping_company: sc)
 
-        dtl = described_class.new(init_distance: 50, final_distance: 150, delivery_time: 2,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 50, final_distance: 150, delivery_time: 3, shipping_company: sc)
 
         expect(dtl).not_to be_valid
       end
@@ -44,14 +34,11 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        described_class.create!(init_distance: 1, final_distance: 100, delivery_time: 2,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        described_class.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
-        described_class.create!(init_distance: 201, final_distance: 300, delivery_time: 3,
-                                delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        described_class.create!(init_distance: 201, final_distance: 300, delivery_time: 4, shipping_company: sc)
 
-        dtl = described_class.new(init_distance: 101, final_distance: 200, delivery_time: 2,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 101, final_distance: 200, delivery_time: 3, shipping_company: sc)
 
         expect(dtl).to be_valid
       end
@@ -63,8 +50,7 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = described_class.new(init_distance: 50, final_distance: 150, delivery_time: 2,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 101, final_distance: 200, delivery_time: 3, shipping_company: sc)
 
         expect(dtl).to be_valid
       end
@@ -74,8 +60,7 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = described_class.new(init_distance: '', final_distance: 150, delivery_time: 2,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: '', final_distance: 200, delivery_time: 3, shipping_company: sc)
 
         expect(dtl).not_to be_valid
       end
@@ -85,8 +70,7 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = described_class.new(init_distance: 50, final_distance: '', delivery_time: 2,
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 101, final_distance: '', delivery_time: 3, shipping_company: sc)
 
         expect(dtl).not_to be_valid
       end
@@ -96,8 +80,7 @@ RSpec.describe DeliveryTimeLine, type: :model do
                                      email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                      billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-        dtl = described_class.new(init_distance: 50, final_distance: 150, delivery_time: '',
-                                  delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+        dtl = described_class.new(init_distance: 101, final_distance: 200, delivery_time: '', shipping_company: sc)
 
         expect(dtl).not_to be_valid
       end

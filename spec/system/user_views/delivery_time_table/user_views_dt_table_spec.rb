@@ -8,8 +8,7 @@ describe 'Usuário acessa tabela de prazos' do
                                  email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -32,8 +31,7 @@ describe 'Usuário acessa tabela de prazos' do
                                  email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
-    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2,
-                                   delivery_time_table: DeliveryTimeTable.find_by(shipping_company: sc))
+    dtl = DeliveryTimeLine.create!(init_distance: 0, final_distance: 100, delivery_time: 2, shipping_company: sc)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm

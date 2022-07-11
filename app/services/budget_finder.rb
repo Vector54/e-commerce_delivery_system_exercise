@@ -13,23 +13,21 @@ class BudgetFinder < ApplicationService
     hashes = []
 
     active_shipping_companies.each do |sca|
-      price_table = PriceTable.find_by(shipping_company: sca)
-      delivery_time_table = DeliveryTimeTable.find_by(shipping_company: sca)
       selected_pl = nil
       selected_dtl = nil
 
-      PriceLine.where(price_table: price_table).each do |pl|
+      PriceLine.where(shipping_company: sca).each do |pl|
         if pl.minimum_volume < volume && pl.maximum_volume > volume &&
            pl.minimum_weight < @parameters_raw[:weight].to_i && pl.maximum_weight > @parameters_raw[:weight].to_i
           selected_pl = pl
-        elsif volume < PriceLine.select(:minimum_volume).where(price_table: price_table).min.minimum_volume ||
+        elsif volume < PriceLine.select(:minimum_volume).where(shipping_company: sca).min.minimum_volume ||
               @parameters_raw[:weight].to_i < PriceLine.select(:minimum_weight)
-                                                       .where(price_table: price_table).min.minimum_weight
-          selected_pl = price_table
+                                                       .where(shipping_company: sca).min.minimum_weight
+          selected_pl = sca
         end
       end
 
-      DeliveryTimeLine.where(delivery_time_table: delivery_time_table).each do |dtl|
+      DeliveryTimeLine.where(shipping_company: sca).each do |dtl|
         if dtl.init_distance < @parameters_raw[:distance].to_i && dtl.final_distance > @parameters_raw[:distance].to_i
           selected_dtl = dtl
         end
@@ -40,7 +38,7 @@ class BudgetFinder < ApplicationService
       case selected_pl
       when PriceLine
         value = selected_pl.value * @parameters_raw[:distance].to_i
-      when PriceTable
+      when ShippingCompany
         value = selected_pl.minimum_value * @parameters_raw[:distance].to_i
       end
       hash = { name: sca.name, id: sca.id, value: value, days: selected_dtl.delivery_time }
