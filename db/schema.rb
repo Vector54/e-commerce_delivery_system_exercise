@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_10_132432) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_200842) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,10 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_10_132432) do
     t.integer "init_distance"
     t.integer "final_distance"
     t.integer "delivery_time"
-    t.integer "delivery_time_table_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["delivery_time_table_id"], name: "index_delivery_time_lines_on_delivery_time_table_id"
+    t.integer "shipping_company_id", null: false
+    t.index ["shipping_company_id"], name: "index_delivery_time_lines_on_shipping_company_id"
   end
 
   create_table "delivery_time_tables", force: :cascade do |t|
@@ -75,10 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_10_132432) do
     t.integer "minimum_weight"
     t.integer "maximum_weight"
     t.integer "value"
-    t.integer "price_table_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["price_table_id"], name: "index_price_lines_on_price_table_id"
+    t.integer "shipping_company_id", null: false
+    t.index ["shipping_company_id"], name: "index_price_lines_on_shipping_company_id"
   end
 
   create_table "price_tables", force: :cascade do |t|
@@ -139,11 +139,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_10_132432) do
     t.index ["shipping_company_id"], name: "index_vehicles_on_shipping_company_id"
   end
 
-  add_foreign_key "delivery_time_lines", "delivery_time_tables"
+  add_foreign_key "delivery_time_lines", "shipping_companies"
   add_foreign_key "delivery_time_tables", "shipping_companies"
   add_foreign_key "orders", "admins"
   add_foreign_key "orders", "shipping_companies"
-  add_foreign_key "price_lines", "price_tables"
+  add_foreign_key "price_lines", "shipping_companies"
   add_foreign_key "price_tables", "shipping_companies"
   add_foreign_key "update_lines", "orders"
   add_foreign_key "users", "shipping_companies"
