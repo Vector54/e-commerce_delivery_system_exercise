@@ -17,8 +17,10 @@ describe 'Usuário acessa tela de cadastro de linha da tabela de preço' do
     click_on 'Tabela de Preços'
     click_on 'Cadastrar Linha'
 
-    expect(page).to have_field 'Volume m³'
-    expect(page).to have_field 'Peso Kg'
+    expect(page).to have_field 'Volume Mínimo'
+    expect(page).to have_field 'Volume Máximo'
+    expect(page).to have_field 'Peso Mínimo'
+    expect(page).to have_field 'Peso Máximo'
     expect(page).to have_field 'Valor por Km'
   end
 
@@ -42,6 +44,7 @@ describe 'Usuário acessa tela de cadastro de linha da tabela de preço' do
     fill_in 'Valor por Km', with: '50'
     click_on 'Cadastrar'
 
+    expect(page).to have_content 'Cadastro realizado com sucesso.'
     expect(page).to have_content '100 - 10000'
     expect(page).to have_content '10 - 100'
     expect(page).to have_content 'R$0,50'
@@ -61,8 +64,12 @@ describe 'Usuário acessa tela de cadastro de linha da tabela de preço' do
     click_on 'Tabela de Preços'
     click_on 'Cadastrar Linha'
     fill_in 'price_line_minimum_volume', with: '100'
+    fill_in 'price_line_maximum_volume', with: '5'
+    fill_in 'price_line_minimum_weight', with: '10'
+    fill_in 'price_line_maximum_weight', with: ''
+    fill_in 'Valor por Km', with: ''
     click_on 'Cadastrar'
 
-    expect(page).to have_content 'Cadastro Falhou'
+    expect(page).to have_content 'Cadastro falhou: Peso Máximo não pode ficar em branco, Volume Mínimo não pode ser maior do que o máximo.'
   end
 end

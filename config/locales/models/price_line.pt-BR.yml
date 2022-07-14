@@ -4,8 +4,8 @@ pt-BR:
       price_line: 'Linha'
     attributes:
       price_line:
-        minimum_volume: 'Volume m³'
-        maximum_volume: 'a'
-        minimum_weight: 'Peso Kg'
-        maximum_weight: 'a'
+        minimum_volume: 'Volume Mínimo'
+        maximum_volume: 'Volume Máximo'
+        minimum_weight: 'Peso Mínimo'
+        maximum_weight: 'Peso Máximo'
         value: 'Valor por Km'
