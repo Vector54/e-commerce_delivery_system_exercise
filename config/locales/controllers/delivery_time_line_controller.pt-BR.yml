@@ -1,5 +1,5 @@
 pt-BR:
-  price_line:
+  delivery_time_line:
     create:
       success: "Cadastro realizado com sucesso."
       failure: "Cadastro falhou: "

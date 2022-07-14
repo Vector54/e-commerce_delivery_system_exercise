@@ -14,9 +14,11 @@ class DeliveryTimeLineController < ApplicationController
     @delivery_time_line = DeliveryTimeLine.new(delivery_time_line_params)
     @delivery_time_line.shipping_company = current_user.shipping_company
     if @delivery_time_line.save
+      flash[:notice] = t('.success')
       redirect_to shipping_company_delivery_time_table_index_path(current_user.shipping_company)
     else
-      flash.now[:alert] = 'Cadastro Falhou'
+      errors = @delivery_time_line.errors.full_messages.join(', ')
+      flash.now[:alert] = t('.failure') + errors
       render 'new'
     end
   end

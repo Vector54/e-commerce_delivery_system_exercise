@@ -4,6 +4,6 @@ pt-BR:
       delivery_time_line: 'Linha'
     attributes:
       delivery_time_line:
-        init_distance: 'Distância'
-        final_distance: 'a'
+        init_distance: 'Distância Inicial'
+        final_distance: 'Distância Final'
         delivery_time: 'Prazo'

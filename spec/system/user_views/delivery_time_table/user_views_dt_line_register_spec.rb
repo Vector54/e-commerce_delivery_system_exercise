@@ -43,6 +43,7 @@ describe 'Usuário acessa link para registrar nova linha da tabela de prazo' do
     dtl = DeliveryTimeLine.last
     expect(page).to have_content "#{dtl.init_distance} - #{dtl.final_distance}"
     expect(page).to have_content dtl.delivery_time.to_s
+    expect(page).to have_content "Cadastro realizado com sucesso."
   end
 
   it 'e falha ao cadastrar uma linha' do
@@ -61,6 +62,6 @@ describe 'Usuário acessa link para registrar nova linha da tabela de prazo' do
     fill_in 'Distância', with: '0'
     click_on 'Cadastrar'
 
-    expect(page).to have_content 'Cadastro Falhou'
+    expect(page).to have_content 'Cadastro falhou: Distância Final não pode ficar em branco, Prazo não pode ficar em branco'
   end
 end
