@@ -2,7 +2,7 @@ pt-BR:
   shipping_companies:
     create:
       success: "Cadastro realizado com sucesso."
-      failure: "Cadastro falhou."
+      failure: "Cadastro falhou: "
     update:
       success: "Transportadora atualizada com sucesso."
       failure: "Falha na Atualização: "
