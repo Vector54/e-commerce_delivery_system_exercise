@@ -8,7 +8,4 @@ class ShippingCompany < ApplicationRecord
   has_many :users, dependent: :destroy
   has_one :price_table, dependent: :destroy
   has_one :delivery_time_table, dependent: :destroy
-
-  private
-
 end

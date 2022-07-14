@@ -69,6 +69,7 @@ describe 'Usuário acessa tela de registro de veículo' do
     fill_in 'Carga Máxima', with: ''
     click_on 'Criar Veículo'
 
-    expect(page).to have_content 'Cadastro falhou: Placa não pode ficar em branco, Carga Máxima não pode ficar em branco'
+    expect(page).to have_content 'Cadastro falhou: Placa não pode ficar em branco, ' \
+                                 'Carga Máxima não pode ficar em branco'
   end
 end

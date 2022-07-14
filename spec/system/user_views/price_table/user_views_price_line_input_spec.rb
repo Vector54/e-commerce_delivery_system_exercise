@@ -70,6 +70,7 @@ describe 'Usuário acessa tela de cadastro de linha da tabela de preço' do
     fill_in 'Valor por Km', with: ''
     click_on 'Cadastrar'
 
-    expect(page).to have_content 'Cadastro falhou: Peso Máximo não pode ficar em branco, Volume Mínimo não pode ser maior do que o máximo.'
+    expect(page).to have_content 'Cadastro falhou: Peso Máximo não pode ficar em branco, ' \
+                                 'Volume Mínimo não pode ser maior do que o máximo.'
   end
 end
