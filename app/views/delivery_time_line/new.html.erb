@@ -1,8 +1,8 @@
 <%= form_with model: @delivery_time_line, url: shipping_company_delivery_time_line_index_path do |form|%>
   <div>
-    <%=form.label :init_distance%>
+    <%=form.label :init_distance, 'Distância'%>
     <%=form.number_field :init_distance%>
-    <%=form.label :final_distance%>
+    <%=form.label :final_distance, 'a'%>
     <%=form.number_field :final_distance%>
   </div>
   <div>

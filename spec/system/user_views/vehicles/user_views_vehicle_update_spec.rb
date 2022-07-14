@@ -84,6 +84,6 @@ describe 'Usuário acessa tela de atualização de veículo' do
     fill_in 'Carga Máxima', with: '7500'
     click_on 'Atualizar Veículo'
 
-    expect(page).to have_content 'Atualização falhou.'
+    expect(page).to have_content 'Atualização falhou: Placa não pode ficar em branco'
   end
 end

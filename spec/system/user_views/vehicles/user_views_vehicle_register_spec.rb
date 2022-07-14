@@ -63,9 +63,13 @@ describe 'Usuário acessa tela de registro de veículo' do
     visit root_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
-    fill_in 'Placa', with: '8585-POU'
+    fill_in 'Placa', with: ''
+    fill_in 'Marca e Modelo', with: 'Volksvagem - Delivery 9.170'
+    fill_in 'Ano de Fabricação', with: '2022'
+    fill_in 'Carga Máxima', with: ''
     click_on 'Criar Veículo'
 
-    expect(page).to have_content 'Cadastro falhou.'
+    expect(page).to have_content 'Cadastro falhou: Placa não pode ficar em branco, ' \
+                                 'Carga Máxima não pode ficar em branco'
   end
 end

@@ -16,9 +16,11 @@ class PriceLineController < ApplicationController
     @price_line.shipping_company = current_user.shipping_company
     @price_line.value = formated_value
     if @price_line.save
+      flash[:notice] = t('.success')
       redirect_to shipping_company_price_table_index_path(current_user.shipping_company)
     else
-      flash.now[:alert] = 'Cadastro Falhou'
+      errors = @price_line.errors.full_messages.join(', ')
+      flash.now[:alert] = t('.failure') + errors
       render 'new'
     end
   end

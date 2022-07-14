@@ -27,7 +27,8 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to "/shipping_companies/#{id}/vehicles", notice: t('.success')
     else
-      flash[:alert] = t('.failure')
+      errors = @vehicle.errors.full_messages.join(', ')
+      flash[:alert] = t('.failure') + errors
       render 'new'
     end
   end
@@ -45,7 +46,8 @@ class VehiclesController < ApplicationController
     if @vehicle.update(parameters)
       redirect_to vehicle_path(id), notice: t('.success')
     else
-      flash[:alert] = t('.failure')
+      errors = @vehicle.errors.full_messages.join(', ')
+      flash[:alert] = t('.failure') + errors
       render 'edit'
     end
   end

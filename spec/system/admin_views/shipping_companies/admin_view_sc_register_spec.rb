@@ -63,8 +63,10 @@ describe 'Admin acessa página de cadastro de transportadora' do
     click_on 'Log in'
     click_on 'Cadastrar Transportadora'
     fill_in 'Nome', with: 'Frete do Seu Carlos'
+    fill_in 'Endereço para faturamento', with: 'Rua do Seu Carlos, 56'
+    fill_in 'Domínio de e-mail', with: 'seucarlosfrete.com.br'
     click_on 'Criar Transportadora'
 
-    expect(page).to have_content 'Cadastro falhou.'
+    expect(page).to have_content 'Cadastro falhou: Razão social não pode ficar em branco, CNPJ não pode ficar em branco'
   end
 end

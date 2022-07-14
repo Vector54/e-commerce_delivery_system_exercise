@@ -1,0 +1,5 @@
+pt-BR:
+  price_line:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou: "

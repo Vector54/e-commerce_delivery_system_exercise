@@ -20,12 +20,13 @@ class ShippingCompaniesController < ApplicationController
   def create
     sc_parameters = params.require(:shipping_company).permit(:name, :corporate_name, :cnpj,
                                                              :billing_adress, :active, :email_domain)
-    @new_sc = ShippingCompany.new(sc_parameters)
+    @shipping_company = ShippingCompany.new(sc_parameters)
 
-    if @new_sc.save
-      redirect_to @new_sc, notice: t('.success')
+    if @shipping_company.save
+      redirect_to @shipping_company, notice: t('.success')
     else
-      flash.now[:alert] = t('.failure')
+      errors = @shipping_company.errors.full_messages.join(', ')
+      flash.now[:alert] = t('.failure') + errors
       render 'new'
     end
   end
