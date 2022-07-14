@@ -81,6 +81,7 @@ describe 'Admin acessa tela de cadastro de OS' do
     expect(page).to have_content "Endereço de entrega - #{os.delivery_adress}"
     expect(page).to have_content "CPF do destinatário - #{os.cpf}"
     expect(page).to have_content "Status - #{os.status}"
+    expect(page).to have_content "Cadastro realizado com sucesso."
   end
 
   it 'e cadastra uma sem sucesso' do
