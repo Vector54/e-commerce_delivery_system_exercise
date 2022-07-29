@@ -1,0 +1,10 @@
+pt-BR:
+  order:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou: "
+    search:
+      no_results: "Nenhum resultado para a pesquisa."
+    new_ul:
+      success: "OS atualizada com sucesso."
+      failure: "Falha na Atualização: "

@@ -1,94 +1,164 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PriceLine, type: :model do
   describe '#valid?' do
-    context 'volume' do
-      it 'mínimo não pode ser maior que o máximo' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
+    context 'when minimum volume' do
+      it 'is bigger than maximum should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
 
-        pl = PriceLine.new(minimum_volume: 50, maximum_volume: 49, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-          
-        expect(pl.valid?).to be false
-      end
+        pl = described_class.new(minimum_volume: 50, maximum_volume: 49, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
 
-      it 'pode intersectar com outras linhas quando o peso não o faz.' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
-
-        PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-        PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 51, 
-            maximum_weight: 100, value: 150, price_table: PriceTable.find_by(shipping_company: sc))
-            
-        pl2 = PriceLine.new(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 101, 
-            maximum_weight: 200, value: 200, price_table: PriceTable.find_by(shipping_company: sc))
-
-        expect(pl2.valid?).to be true
-      end
-
-      it 'não pode instersectar com outras linhas quando o peso o faz.' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
-
-        PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-        PriceLine.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 51, 
-            maximum_weight: 100, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-            
-        pl2 = PriceLine.new(minimum_volume: 50, maximum_volume: 4000, minimum_weight: 40, 
-            maximum_weight: 100, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-        expect(pl2.valid?).to be false
-      end
-
-      it 'pode estar entre dois ranges.' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
-
-        PriceLine.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-        PriceLine.create!(minimum_volume: 101, maximum_volume: 200, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-            
-        pl2 = PriceLine.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-
-        expect(pl2.valid?).to be true
+        expect(pl).not_to be_valid
       end
     end
 
-    context 'peso' do
-      it 'mínimo não pode ser maior que o máximo' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
+    context 'when volume' do
+      it 'intersects with other lines when weight doesn\'t do it should give true' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
 
-        pl = PriceLine.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 51, 
-            maximum_weight: 50, value: 100, price_table: PriceTable.find_by(shipping_company: sc))
-          
-        expect(pl.valid?).to be false
+        described_class.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
+                                maximum_weight: 50, value: 100, shipping_company: sc)
+
+        described_class.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 51,
+                                maximum_weight: 100, value: 150, shipping_company: sc)
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 101,
+                                 maximum_weight: 200, value: 200, shipping_company: sc)
+
+        expect(pl).to be_valid
+      end
+
+      it 'intersects with other lines when weight does it should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        described_class.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 5,
+                                maximum_weight: 50, value: 100, shipping_company: sc)
+
+        described_class.create!(minimum_volume: 1, maximum_volume: 5000, minimum_weight: 51,
+                                maximum_weight: 100, value: 100, shipping_company: sc)
+
+        pl = described_class.new(minimum_volume: 50, maximum_volume: 4000, minimum_weight: 40,
+                                 maximum_weight: 100, value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'can be inside two ranges.' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        described_class.create!(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
+                                maximum_weight: 50, value: 100, shipping_company: sc)
+
+        described_class.create!(minimum_volume: 101, maximum_volume: 200, minimum_weight: 5,
+                                maximum_weight: 50, value: 100, shipping_company: sc)
+
+        pl = described_class.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).to be_valid
       end
     end
 
-    context 'valor' do
-      it 'presente' do
-        sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-          email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-          billing_adress: 'Rua do Seu Carlos, 86')
+    context 'when minimum weight' do
+      it 'is bigger than maximum should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
 
-        pl = PriceLine.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5, 
-            maximum_weight: 50, value: '', price_table: PriceTable.find_by(shipping_company: sc))
-          
-        expect(pl.valid?).to be false
+        pl = described_class.new(minimum_volume: 51, maximum_volume: 100, minimum_weight: 51,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+    end
+
+    context 'when presence' do
+      it 'of everything should give true' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).to be_valid
+      end
+
+      it 'of everything but value should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
+                                 maximum_weight: 50, value: '', shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'of everything but minimum volume should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: '', maximum_volume: 50, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'of everything but maximum volume should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: '', minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'of everything but minimum weight should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: '',
+                                 maximum_weight: 50, value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'of everything but maximum weight should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
+                                 maximum_weight: '', value: 100, shipping_company: sc)
+
+        expect(pl).not_to be_valid
+      end
+
+      it 'of everything but shipping company should give false' do
+        sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                     email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                     billing_adress: 'Rua do Seu Carlos, 86')
+
+        pl = described_class.new(minimum_volume: 1, maximum_volume: 50, minimum_weight: 5,
+                                 maximum_weight: 50, value: 100, shipping_company: ShippingCompany.find_by(id: 9999))
+
+        expect(pl).not_to be_valid
       end
     end
   end

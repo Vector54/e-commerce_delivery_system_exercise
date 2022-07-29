@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUpdateLines < ActiveRecord::Migration[7.0]
   def change
     create_table :update_lines do |t|

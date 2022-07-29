@@ -1,0 +1,13 @@
+pt-BR:
+  shipping_companies:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou: "
+    update:
+      success: "Transportadora atualizada com sucesso."
+      failure: "Falha na Atualização: "
+    status_change:
+      success: "Status atualizado com sucesso."
+      failure: "Falha na atualização, por favor, revise os dados."
+    budget_response:
+      no_results: "Nenhum resultado encontrado."

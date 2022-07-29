@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário acessa tela de registro de veículo' do
   it 'e a vê' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-                                  email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -23,9 +25,9 @@ describe 'Usuário acessa tela de registro de veículo' do
   end
 
   it 'e cadastra um veículo' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-                                  email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -41,18 +43,17 @@ describe 'Usuário acessa tela de registro de veículo' do
     fill_in 'Carga Máxima', with: '8800000'
     click_on 'Criar Veículo'
 
-                                        
     v = Vehicle.last
-    expect(page).to have_content 'Cadastro realizado com sucesso.'                             
+    expect(page).to have_content 'Cadastro realizado com sucesso.'
     expect(page).to have_content v.brand_model
-    expect(page).to have_content "Placa -"
+    expect(page).to have_content 'Placa -'
     expect(page).to have_link v.plate
   end
 
   it 'e falha ao cadastrar um veículo' do
-    sc = ShippingCompany.create!(name:"Frete do Seu Carlos", corporate_name:"FRETE DO SEU CARLOS LTDA",
-                                  email_domain:"seucarlosfrete.com.br", cnpj: "06.902.995/0001-62",
-                                  billing_adress: 'Rua do Seu Carlos, 86', active: true)
+    sc = ShippingCompany.create!(name: 'Frete do Seu Carlos', corporate_name: 'FRETE DO SEU CARLOS LTDA',
+                                 email_domain: 'seucarlosfrete.com.br', cnpj: '06.902.995/0001-62',
+                                 billing_adress: 'Rua do Seu Carlos, 86', active: true)
 
     u = User.new(name: 'José', email: 'jose@seucarlosfrete.com.br', password: 'password456')
     u.confirm
@@ -62,10 +63,13 @@ describe 'Usuário acessa tela de registro de veículo' do
     visit root_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
-    fill_in 'Placa', with: '8585-POU'
+    fill_in 'Placa', with: ''
+    fill_in 'Marca e Modelo', with: 'Volksvagem - Delivery 9.170'
+    fill_in 'Ano de Fabricação', with: '2022'
+    fill_in 'Carga Máxima', with: ''
     click_on 'Criar Veículo'
 
-                                        
-    expect(page).to have_content 'Cadastro falhou.'                             
+    expect(page).to have_content 'Cadastro falhou: Placa não pode ficar em branco, ' \
+                                 'Carga Máxima não pode ficar em branco'
   end
 end

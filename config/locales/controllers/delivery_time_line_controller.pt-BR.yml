@@ -1,0 +1,5 @@
+pt-BR:
+  delivery_time_line:
+    create:
+      success: "Cadastro realizado com sucesso."
+      failure: "Cadastro falhou: "
